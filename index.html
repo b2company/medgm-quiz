@@ -2069,8 +2069,67 @@
             currentStep: 0,
             totalSteps: 20,
             answers: {},
-            utmParams: {}
+            utmParams: {},
+            sessionId: null,
+            startTime: null
         };
+
+        // Generate unique session ID
+        function generateSessionId() {
+            return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // Initialize session tracking
+        function initializeSession() {
+            quizData.sessionId = generateSessionId();
+            quizData.startTime = new Date().toISOString();
+
+            // Track session start
+            trackEvent('session_start', {
+                sessionId: quizData.sessionId,
+                timestamp: quizData.startTime,
+                utmParams: quizData.utmParams
+            });
+        }
+
+        // Track events for analytics
+        function trackEvent(eventType, data) {
+            const events = JSON.parse(localStorage.getItem('quiz_analytics') || '[]');
+            events.push({
+                type: eventType,
+                data: data,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('quiz_analytics', JSON.stringify(events));
+        }
+
+        // Track step completion
+        function trackStepCompletion(step) {
+            // Update step counters
+            const stepCounters = JSON.parse(localStorage.getItem('quiz_step_counters') || '{}');
+            stepCounters[`step_${step}`] = (stepCounters[`step_${step}`] || 0) + 1;
+            localStorage.setItem('quiz_step_counters', JSON.stringify(stepCounters));
+
+            // Track event
+            trackEvent('step_completion', {
+                sessionId: quizData.sessionId,
+                step: step,
+                answers: quizData.answers
+            });
+        }
+
+        // Save completed quiz response
+        function saveQuizResponse() {
+            const responses = JSON.parse(localStorage.getItem('quiz_responses') || '[]');
+            responses.push({
+                sessionId: quizData.sessionId,
+                startTime: quizData.startTime,
+                completionTime: new Date().toISOString(),
+                answers: quizData.answers,
+                utmParams: quizData.utmParams
+            });
+            localStorage.setItem('quiz_responses', JSON.stringify(responses));
+        }
 
         // Capture UTM Parameters from URL
         function captureUTMParameters() {

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard MedGM - Central de Controle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%);
+            background-attachment: fixed;
+            color: #FFFFFF;
+            min-height: 100vh;
+        }
+
+        /* Login Screen */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(202, 170, 130, 0.3);
+            border-radius: 24px;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-logo img {
+            width: 180px;
+            filter: drop-shadow(0 4px 12px rgba(202, 170, 130, 0.3));
+        }
+
+        .login-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            color: #FFFFFF;
+            background: rgba(202, 170, 130, 0.08);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #CAAA82;
+            background: rgba(202, 170, 130, 0.12);
+            box-shadow: 0 0 0 4px rgba(202, 170, 130, 0.15);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 18px 32px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1A1A1A;
+            background: linear-gradient(135deg, #CAAA82 0%, #B89968 100%);
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(202, 170, 130, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.5);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            background: rgba(244, 67, 54, 0.15);
+            border: 2px solid rgba(244, 67, 54, 0.4);
+            color: #FF5252;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            margin-top: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Dashboard Layout */
+        .dashboard-container {
+            display: none;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .dashboard-container.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            border-radius: 20px;
+        }
+
+        .dashboard-logo img {
+            height: 40px;
+        }
+
+        .logout-btn {
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #FFFFFF;
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid rgba(244, 67, 54, 0.4);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(244, 67, 54, 0.3);
+            border-color: rgba(244, 67, 54, 0.6);
+        }
+
+        .dashboard-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .tab-btn {
+            padding: 14px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid rgba(202, 170, 130, 0.2);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: #FFFFFF;
+            border-color: rgba(202, 170, 130, 0.4);
+        }
+
+        .tab-btn.active {
+            color: #1A1A1A;
+            background: linear-gradient(135deg, #CAAA82 0%, #B89968 100%);
+            border-color: transparent;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Overview Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            border-radius: 20px;
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.2);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #CAAA82;
+        }
+
+        .stat-icon {
+            font-size: 48px;
+            color: rgba(202, 170, 130, 0.3);
+            float: right;
+        }
+
+        /* Steps Table */
+        .steps-table {
+            width: 100%;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .steps-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .steps-table th {
+            background: rgba(202, 170, 130, 0.15);
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: left;
+            padding: 18px 20px;
+            border-bottom: 2px solid rgba(202, 170, 130, 0.25);
+        }
+
+        .steps-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(202, 170, 130, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .steps-table tr:hover {
+            background: rgba(202, 170, 130, 0.08);
+        }
+
+        .step-number {
+            font-weight: 700;
+            color: #CAAA82;
+        }
+
+        .view-btn {
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1A1A1A;
+            background: linear-gradient(135deg, #CAAA82 0%, #B89968 100%);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(202, 170, 130, 0.4);
+        }
+
+        /* Responses Table */
+        .responses-table {
+            width: 100%;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            border-radius: 20px;
+            overflow: hidden;
+            overflow-x: auto;
+        }
+
+        .responses-table table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .responses-table th {
+            background: rgba(202, 170, 130, 0.15);
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: left;
+            padding: 18px 20px;
+            border-bottom: 2px solid rgba(202, 170, 130, 0.25);
+            white-space: nowrap;
+        }
+
+        .responses-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(202, 170, 130, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .responses-table tr:hover {
+            background: rgba(202, 170, 130, 0.08);
+        }
+
+        .details-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #FFFFFF;
+            background: rgba(202, 170, 130, 0.2);
+            border: 1px solid rgba(202, 170, 130, 0.4);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .details-btn:hover {
+            background: rgba(202, 170, 130, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .empty-state .material-icons {
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+
+        /* Chart */
+        .funnel-chart {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .chart-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 24px;
+        }
+
+        .chart-bar {
+            margin-bottom: 20px;
+        }
+
+        .chart-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .chart-bar-fill-container {
+            height: 32px;
+            background: rgba(202, 170, 130, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chart-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #CAAA82 0%, #B89968 100%);
+            border-radius: 8px;
+            transition: width 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1A1A1A;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+
+            .steps-table, .responses-table {
+                font-size: 13px;
+            }
+
+            .steps-table td, .responses-table td,
+            .steps-table th, .responses-table th {
+                padding: 12px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginContainer" class="login-container">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="assets/logo-dourada.png" alt="MedGM">
+            </div>
+            <h1 class="login-title">Central de Controle</h1>
+            <form id="loginForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label class="form-label">Login</label>
+                    <input type="text" id="loginUser" class="form-input" placeholder="Digite seu login" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Senha</label>
+                    <input type="password" id="loginPass" class="form-input" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="login-btn" onclick="handleLogin()">Acessar Dashboard</button>
+                <div id="errorMessage" class="error-message">
+                    Login ou senha incorretos
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboardContainer" class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="dashboard-logo">
+                <img src="assets/logo-dourada.png" alt="MedGM">
+            </div>
+            <button class="logout-btn" onclick="handleLogout()">
+                <span class="material-icons" style="vertical-align: middle; font-size: 18px; margin-right: 4px;">logout</span>
+                Sair
+            </button>
+        </div>
+
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" onclick="switchTab('overview')">
+                <span class="material-icons" style="vertical-align: middle; font-size: 18px; margin-right: 4px;">dashboard</span>
+                Visão Geral
+            </button>
+            <button class="tab-btn" onclick="switchTab('funnel')">
+                <span class="material-icons" style="vertical-align: middle; font-size: 18px; margin-right: 4px;">filter_list</span>
+                Funil de Conversão
+            </button>
+            <button class="tab-btn" onclick="switchTab('steps')">
+                <span class="material-icons" style="vertical-align: middle; font-size: 18px; margin-right: 4px;">list</span>
+                Etapas do Quiz
+            </button>
+            <button class="tab-btn" onclick="switchTab('responses')">
+                <span class="material-icons" style="vertical-align: middle; font-size: 18px; margin-right: 4px;">people</span>
+                Respostas
+            </button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overviewTab" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="material-icons stat-icon">people</span>
+                    <div class="stat-label">Total de Sessões</div>
+                    <div class="stat-value" id="totalSessions">0</div>
+                </div>
+                <div class="stat-card">
+                    <span class="material-icons stat-icon">check_circle</span>
+                    <div class="stat-label">Quizzes Completos</div>
+                    <div class="stat-value" id="completedQuizzes">0</div>
+                </div>
+                <div class="stat-card">
+                    <span class="material-icons stat-icon">show_chart</span>
+                    <div class="stat-label">Taxa de Conclusão</div>
+                    <div class="stat-value" id="completionRate">0%</div>
+                </div>
+                <div class="stat-card">
+                    <span class="material-icons stat-icon">person_add</span>
+                    <div class="stat-label">Leads Capturados</div>
+                    <div class="stat-value" id="leadsCount">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Funnel Tab -->
+        <div id="funnelTab" class="tab-content">
+            <div class="funnel-chart">
+                <h2 class="chart-title">Funil de Conversão por Etapa</h2>
+                <div id="funnelChartContent">
+                    <!-- Chart bars will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Steps Tab -->
+        <div id="stepsTab" class="tab-content">
+            <div class="steps-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Etapa</th>
+                            <th>Título</th>
+                            <th>Tipo</th>
+                            <th>Visitantes</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stepsTableBody">
+                        <!-- Steps will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Responses Tab -->
+        <div id="responsesTab" class="tab-content">
+            <div class="responses-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Session ID</th>
+                            <th>Especialidade</th>
+                            <th>Faturamento</th>
+                            <th>Meta</th>
+                            <th>UTM Source</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="responsesTableBody">
+                        <!-- Responses will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Authentication
+        const CREDENTIALS = {
+            username: 'MEDGM',
+            password: 'med@Mei81'
+        };
+
+        function handleLogin() {
+            const username = document.getElementById('loginUser').value;
+            const password = document.getElementById('loginPass').value;
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('dashboardContainer').classList.add('active');
+                errorMsg.classList.remove('show');
+                loadDashboardData();
+            } else {
+                errorMsg.classList.add('show');
+            }
+        }
+
+        function handleLogout() {
+            document.getElementById('dashboardContainer').classList.remove('active');
+            document.getElementById('loginContainer').style.display = 'flex';
+            document.getElementById('loginUser').value = '';
+            document.getElementById('loginPass').value = '';
+            document.getElementById('errorMessage').classList.remove('show');
+        }
+
+        // Tab Navigation
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.tab-btn').classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName + 'Tab').classList.add('active');
+
+            // Load specific tab data
+            if (tabName === 'funnel') {
+                renderFunnelChart();
+            }
+        }
+
+        // Quiz Steps Definition
+        const quizSteps = [
+            { number: 0, title: 'Landing Page', type: 'Hero' },
+            { number: 1, title: 'Especialidade Médica', type: 'Seleção' },
+            { number: 2, title: 'Faturamento Atual', type: 'Seleção' },
+            { number: 3, title: '% Convênio', type: 'Seleção' },
+            { number: 4, title: 'Insight Convênio', type: 'Insight' },
+            { number: 5, title: 'Leads/Mês', type: 'Seleção' },
+            { number: 6, title: 'Taxa de Conversão', type: 'Seleção' },
+            { number: 7, title: 'Insight Conversão', type: 'Insight' },
+            { number: 8, title: 'Roteiro Secretária', type: 'Seleção' },
+            { number: 9, title: 'Retorno Pacientes', type: 'Seleção' },
+            { number: 10, title: 'Insight Retenção', type: 'Insight' },
+            { number: 11, title: 'Controle de Métricas', type: 'Seleção' },
+            { number: 12, title: 'Maior Desafio', type: 'Seleção' },
+            { number: 13, title: 'Meta de Faturamento', type: 'Input' },
+            { number: 14, title: 'Disponibilidade', type: 'Seleção' },
+            { number: 15, title: 'Captura de Leads', type: 'Formulário' },
+            { number: 16, title: 'Loading/Análise', type: 'Loading' },
+            { number: 17, title: 'Resultado', type: 'Diagnóstico' },
+            { number: 18, title: 'Oferta/Presente', type: 'CTA' },
+            { number: 19, title: 'Agendamento + Sales', type: 'Booking' }
+        ];
+
+        // Load Dashboard Data
+        function loadDashboardData() {
+            loadOverviewStats();
+            renderStepsTable();
+            renderResponsesTable();
+        }
+
+        function loadOverviewStats() {
+            const stepCounters = JSON.parse(localStorage.getItem('quiz_step_counters') || '{}');
+            const responses = JSON.parse(localStorage.getItem('quiz_responses') || '[]');
+            const analytics = JSON.parse(localStorage.getItem('quiz_analytics') || '[]');
+
+            // Total sessions (people who started the quiz - step 1)
+            const totalSessions = stepCounters['step_1'] || 0;
+
+            // Completed quizzes
+            const completedQuizzes = responses.length;
+
+            // Completion rate
+            const completionRate = totalSessions > 0
+                ? ((completedQuizzes / totalSessions) * 100).toFixed(1)
+                : 0;
+
+            // Leads captured (step 15)
+            const leadsCount = stepCounters['step_15'] || 0;
+
+            document.getElementById('totalSessions').textContent = totalSessions;
+            document.getElementById('completedQuizzes').textContent = completedQuizzes;
+            document.getElementById('completionRate').textContent = completionRate + '%';
+            document.getElementById('leadsCount').textContent = leadsCount;
+        }
+
+        function renderFunnelChart() {
+            const stepCounters = JSON.parse(localStorage.getItem('quiz_step_counters') || '{}');
+            const chartContent = document.getElementById('funnelChartContent');
+
+            // Get max value for percentage calculation
+            const maxCount = Math.max(...quizSteps.map(step => stepCounters[`step_${step.number}`] || 0));
+
+            if (maxCount === 0) {
+                chartContent.innerHTML = '<div class="empty-state"><span class="material-icons">analytics</span><p>Nenhum dado disponível ainda</p></div>';
+                return;
+            }
+
+            let chartHTML = '';
+            quizSteps.forEach(step => {
+                const count = stepCounters[`step_${step.number}`] || 0;
+                const percentage = maxCount > 0 ? (count / maxCount) * 100 : 0;
+
+                chartHTML += `
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span><strong>Etapa ${step.number}:</strong> ${step.title}</span>
+                            <span><strong>${count}</strong> visitantes</span>
+                        </div>
+                        <div class="chart-bar-fill-container">
+                            <div class="chart-bar-fill" style="width: ${percentage}%;">
+                                ${percentage > 10 ? Math.round(percentage) + '%' : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            chartContent.innerHTML = chartHTML;
+        }
+
+        function renderStepsTable() {
+            const stepCounters = JSON.parse(localStorage.getItem('quiz_step_counters') || '{}');
+            const tbody = document.getElementById('stepsTableBody');
+
+            let tableHTML = '';
+            quizSteps.forEach(step => {
+                const count = stepCounters[`step_${step.number}`] || 0;
+                tableHTML += `
+                    <tr>
+                        <td class="step-number">Etapa ${step.number}</td>
+                        <td>${step.title}</td>
+                        <td>${step.type}</td>
+                        <td><strong>${count}</strong></td>
+                        <td>
+                            <button class="view-btn" onclick="viewStep(${step.number})">
+                                <span class="material-icons" style="vertical-align: middle; font-size: 14px; margin-right: 2px;">visibility</span>
+                                Visualizar
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = tableHTML;
+        }
+
+        function viewStep(stepNumber) {
+            window.open(`index.html?preview=${stepNumber}`, '_blank');
+        }
+
+        function renderResponsesTable() {
+            const responses = JSON.parse(localStorage.getItem('quiz_responses') || '[]');
+            const tbody = document.getElementById('responsesTableBody');
+
+            if (responses.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><span class="material-icons">inbox</span><p>Nenhuma resposta registrada ainda</p></td></tr>';
+                return;
+            }
+
+            let tableHTML = '';
+            responses.reverse().forEach(response => {
+                const date = new Date(response.timestamp);
+                const dateStr = date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR');
+
+                tableHTML += `
+                    <tr>
+                        <td>${dateStr}</td>
+                        <td><code style="font-size: 11px;">${response.sessionId.substring(0, 16)}...</code></td>
+                        <td>${response.answers.especialidade || '-'}</td>
+                        <td>${response.answers.faturamento || '-'}</td>
+                        <td>${response.answers.meta || '-'}</td>
+                        <td>${response.utmParams?.site_source_name || '-'}</td>
+                        <td>
+                            <button class="details-btn" onclick='viewResponseDetails(${JSON.stringify(response).replace(/'/g, "&apos;")})'>
+                                <span class="material-icons" style="vertical-align: middle; font-size: 12px;">info</span>
+                                Detalhes
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = tableHTML;
+        }
+
+        function viewResponseDetails(response) {
+            alert(`
+Detalhes da Resposta:
+
+Session ID: ${response.sessionId}
+Data: ${new Date(response.timestamp).toLocaleString('pt-BR')}
+Tempo Total: ${Math.round(response.totalTime / 1000)}s
+
+=== RESPOSTAS ===
+${Object.entries(response.answers).map(([key, value]) => `${key}: ${value}`).join('\n')}
+
+=== SCORES ===
+${Object.entries(response.scores).map(([key, value]) => `${key}: ${value}/100`).join('\n')}
+
+=== UTM PARAMS ===
+${response.utmParams ? Object.entries(response.utmParams).map(([key, value]) => `${key}: ${value || 'N/A'}`).join('\n') : 'Nenhum UTM capturado'}
+            `);
+        }
+
+        // Enter key login
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loginPass').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleLogin();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
