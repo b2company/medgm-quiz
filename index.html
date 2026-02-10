@@ -2121,11 +2121,17 @@
         // Save completed quiz response
         function saveQuizResponse() {
             const responses = JSON.parse(localStorage.getItem('quiz_responses') || '[]');
+            const completionTime = new Date();
+            const totalTime = quizData.startTime ? completionTime - new Date(quizData.startTime) : 0;
+
             responses.push({
                 sessionId: quizData.sessionId,
+                timestamp: completionTime.toISOString(),
                 startTime: quizData.startTime,
-                completionTime: new Date().toISOString(),
+                totalTime: totalTime,
                 answers: quizData.answers,
+                scores: quizData.scores || {},
+                gargalo: quizData.gargalo || '',
                 utmParams: quizData.utmParams
             });
             localStorage.setItem('quiz_responses', JSON.stringify(responses));
@@ -2237,6 +2243,7 @@
         // Start Quiz
         function startQuiz() {
             fbq('track', 'Lead');
+            initializeSession(); // Initialize tracking
             quizData.currentStep = 1;
             showStep(1);
         }
@@ -2265,6 +2272,9 @@
             document.querySelector(`[data-step="${step}"]`).classList.add('active');
             updateProgressBar();
             window.scrollTo(0, 0);
+
+            // Track step completion
+            trackStepCompletion(step);
 
             // Start form button countdown when reaching step 15
             if (step === 15) {
@@ -2402,6 +2412,18 @@
 
             scores.sort((a, b) => a.score - b.score);
             document.getElementById('gargaloText').textContent = scores[0].text;
+
+            // Save scores to quizData
+            quizData.scores = {
+                captacao: captacaoScore,
+                conversao: conversaoScore,
+                retencao: retencaoScore,
+                gestao: gestaoScore
+            };
+            quizData.gargalo = scores[0].name;
+
+            // Save quiz response to localStorage
+            saveQuizResponse();
 
             fbq('track', 'ViewContent', {content_name: 'Diagnostico'});
         }
