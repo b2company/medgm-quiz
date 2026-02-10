@@ -35,7 +35,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #0A0A0A;
+            background: linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%);
+            background-attachment: fixed;
             color: #FFFFFF;
             overflow-x: hidden;
         }
@@ -80,12 +81,11 @@
         .step {
             display: none;
             min-height: 100vh;
-            padding: 60px 20px 32px;
+            padding: 70px 24px 40px;
             max-width: 700px;
             margin: 0 auto;
             width: 100%;
             animation: fadeIn 0.4s ease;
-            background: #0A0A0A;
         }
 
         .step.active {
@@ -100,51 +100,57 @@
 
         /* Back Button */
         .back-btn {
-            width: 44px;
-            height: 44px;
-            border: 1px solid rgba(202, 170, 130, 0.3);
-            background: rgba(202, 170, 130, 0.1);
+            width: 48px;
+            height: 48px;
+            border: 2px solid rgba(202, 170, 130, 0.4);
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            transition: all 0.2s;
+            margin-bottom: 24px;
+            transition: all 0.3s;
         }
 
         .back-btn:hover {
             background: rgba(202, 170, 130, 0.2);
             border-color: #CAAA82;
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(202, 170, 130, 0.4);
         }
 
         .back-btn .material-icons {
             color: #CAAA82;
+            font-size: 24px;
         }
 
-        /* Typography - Mobile First */
+        /* Typography - High Conversion Design */
         .label {
-            font-size: 11px;
-            letter-spacing: 1.5px;
+            font-size: 12px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: #CAAA82;
-            margin-bottom: 12px;
-            font-weight: 500;
+            margin-bottom: 16px;
+            font-weight: 600;
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 700;
             line-height: 1.3;
             color: #FFFFFF;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .subtitle {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 24px;
-            line-height: 1.5;
+            font-size: 16px;
+            color: #FFFFFF;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            opacity: 0.95;
         }
 
         /* Landing Page */
@@ -214,34 +220,52 @@
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin: 24px 0;
+            gap: 16px;
+            margin: 32px 0;
         }
 
         .option-btn {
             width: 100%;
-            padding: 18px 20px;
+            padding: 22px 24px;
             text-align: left;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
             color: #FFFFFF;
-            background: rgba(202, 170, 130, 0.08);
-            border: 1px solid rgba(202, 170, 130, 0.2);
-            border-radius: 14px;
+            background: rgba(202, 170, 130, 0.12);
+            border: 2px solid rgba(202, 170, 130, 0.3);
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: 'Inter', sans-serif;
-            min-height: 56px;
+            min-height: 64px;
             display: flex;
             align-items: center;
-            line-height: 1.4;
+            line-height: 1.5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(202, 170, 130, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .option-btn:hover {
-            background: rgba(202, 170, 130, 0.15);
+            background: rgba(202, 170, 130, 0.2);
             border-color: #CAAA82;
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(202, 170, 130, 0.2);
+            box-shadow: 0 8px 24px rgba(202, 170, 130, 0.3), 0 0 40px rgba(202, 170, 130, 0.15);
+        }
+
+        .option-btn:hover::before {
+            opacity: 1;
         }
 
         /* Input */
@@ -251,58 +275,83 @@
 
         .input-field {
             width: 100%;
-            padding: 18px 20px;
-            font-size: 20px;
-            border: 1px solid rgba(202, 170, 130, 0.3);
-            border-radius: 14px;
-            background: rgba(202, 170, 130, 0.05);
+            padding: 22px 24px;
+            font-size: 22px;
+            border: 2px solid rgba(202, 170, 130, 0.3);
+            border-radius: 16px;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
             color: #FFFFFF;
             font-family: 'Inter', sans-serif;
-            min-height: 56px;
+            min-height: 64px;
+            transition: all 0.3s;
+            font-weight: 600;
         }
 
         .input-field::placeholder {
             color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
         }
 
         .input-field:focus {
             outline: none;
             border-color: #CAAA82;
-            background: rgba(202, 170, 130, 0.1);
-            box-shadow: 0 0 0 4px rgba(202, 170, 130, 0.1);
+            background: rgba(26, 26, 26, 0.8);
+            box-shadow: 0 0 0 4px rgba(202, 170, 130, 0.2), 0 0 24px rgba(202, 170, 130, 0.3);
         }
 
         /* Buttons */
         .continue-btn {
             width: 100%;
-            padding: 16px 28px;
-            font-size: 15px;
-            font-weight: 600;
+            padding: 20px 32px;
+            font-size: 17px;
+            font-weight: 700;
             color: #1A1A1A;
-            background: #CAAA82;
+            background: linear-gradient(135deg, #CAAA82 0%, #B89968 100%);
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             margin-top: auto;
             font-family: 'Inter', sans-serif;
-            min-height: 52px;
+            min-height: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 24px rgba(202, 170, 130, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .continue-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .continue-btn:hover:not(:disabled)::before {
+            left: 100%;
         }
 
         .continue-btn:hover:not(:disabled) {
-            background: #FFEBC3;
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(202, 170, 130, 0.4);
+            background: linear-gradient(135deg, #FFEBC3 0%, #CAAA82 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.6), 0 0 40px rgba(202, 170, 130, 0.3);
         }
 
         .continue-btn:disabled {
-            background: rgba(202, 170, 130, 0.3);
-            color: rgba(26, 26, 26, 0.5);
+            background: rgba(202, 170, 130, 0.2);
+            color: rgba(255, 255, 255, 0.3);
             cursor: not-allowed;
+            box-shadow: none;
         }
 
         /* Insight Page */
@@ -598,27 +647,30 @@
         }
 
         .section-title {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             line-height: 1.3;
+            color: #FFFFFF;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .section-subtitle {
-            font-size: 15px;
+            font-size: 17px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 32px;
-            line-height: 1.5;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .section-subtitle-dark {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .section-title {
             color: #FFFFFF;
+            opacity: 0.95;
         }
 
         /* Pain Points Grid */
@@ -630,29 +682,51 @@
         }
 
         .pain-card {
-            background: rgba(202, 170, 130, 0.05);
-            padding: 24px 20px;
-            border-radius: 16px;
-            border: 1px solid rgba(202, 170, 130, 0.2);
-            transition: all 0.2s;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 28px 24px;
+            border-radius: 20px;
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .pain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #CAAA82, #FFEBC3);
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .pain-card:hover {
-            background: rgba(202, 170, 130, 0.1);
+            background: rgba(26, 26, 26, 0.8);
             border-color: #CAAA82;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.3);
+        }
+
+        .pain-card:hover::before {
+            opacity: 1;
         }
 
         .pain-card h3 {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
             color: #CAAA82;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .pain-card p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.5;
+            font-size: 15px;
+            color: #FFFFFF;
+            line-height: 1.6;
+            opacity: 0.95;
         }
 
         /* Methodology Grid */
@@ -664,17 +738,22 @@
         }
 
         .method-card {
-            background: rgba(202, 170, 130, 0.05);
-            padding: 24px 20px;
-            border-radius: 16px;
-            border-left: 4px solid #CAAA82;
-            border: 1px solid rgba(202, 170, 130, 0.2);
-            transition: all 0.2s;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 28px 24px;
+            border-radius: 20px;
+            border-left: 5px solid #CAAA82;
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            border-left: 5px solid #CAAA82;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .method-card:hover {
-            background: rgba(202, 170, 130, 0.1);
+            background: rgba(26, 26, 26, 0.8);
             border-color: #CAAA82;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.3);
         }
 
         .method-number {
@@ -692,17 +771,18 @@
         }
 
         .method-card h3 {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .method-card p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.5;
-            margin-bottom: 6px;
+            font-size: 15px;
+            color: #FFFFFF;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            opacity: 0.95;
         }
 
         .method-result {
@@ -1534,6 +1614,11 @@
 
         <!-- STEP 19: Landing Page Completa -->
         <div class="step" data-step="19" style="max-width: 900px; padding-top: 40px;">
+            <!-- Logo MedGM -->
+            <div class="logo-medgm" style="margin-bottom: 40px;">
+                <img src="assets/logo-dourada.png" alt="MEDGM">
+            </div>
+
             <!-- DOBRA 01: HERO SECTION -->
             <div class="landing-hero" style="padding: 60px 20px;">
                 <div style="display: inline-block; background: #1A1A1A; color: white; padding: 10px 24px; border-radius: 24px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 32px;">
