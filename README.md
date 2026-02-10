@@ -76,12 +76,14 @@ Eventos rastreados:
 - **Meta Pixel** - Tracking de conversão
 - **B2Company Widgets** - Formulário de captura + Booking
 
-## 📱 Responsivo
+## 📱 Responsivo - Otimizado para Mobile
 
-- Mobile-first design
-- Grid adaptativo para cards de resultado
-- Fontes e espaçamentos responsivos
-- FAQ accordion otimizado para mobile
+- **Mobile-first design** - Todo o quiz foi otimizado prioritariamente para dispositivos móveis
+- **Botões touch-friendly** - Altura mínima de 60px para fácil interação
+- **Fontes otimizadas** - Tamanhos maiores para melhor legibilidade em telas pequenas
+- **Espaçamentos confortáveis** - Padding e margins ajustados para navegação suave
+- **Grid adaptativo** - Cards de resultado em coluna única no mobile
+- **FAQ accordion** - Totalmente otimizado para interação touch
 
 ## 🚀 Deploy
 
