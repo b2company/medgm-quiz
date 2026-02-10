@@ -1358,7 +1358,7 @@
                 </div>
 
                 <button class="continue-btn" id="formBtn" disabled onclick="formSubmitted()">
-                    Continuar (aguarde 5s)
+                    Continuar
                     <span class="material-icons">arrow_forward</span>
                 </button>
             </div>
@@ -1801,24 +1801,15 @@
             }
         }
 
-        // Form button countdown
+        // Form button countdown (5s delay without visual counter)
         function startFormButtonCountdown() {
             const formBtn = document.getElementById('formBtn');
             if (formBtn) {
                 formBtn.disabled = true;
-                let countdown = 5;
-                formBtn.innerHTML = `Continuar (${countdown}s) <span class="material-icons">arrow_forward</span>`;
 
-                const interval = setInterval(() => {
-                    countdown--;
-                    if (countdown > 0) {
-                        formBtn.innerHTML = `Continuar (${countdown}s) <span class="material-icons">arrow_forward</span>`;
-                    } else {
-                        clearInterval(interval);
-                        formBtn.disabled = false;
-                        formBtn.innerHTML = 'Continuar <span class="material-icons">arrow_forward</span>';
-                    }
-                }, 1000);
+                setTimeout(() => {
+                    formBtn.disabled = false;
+                }, 5000);
             }
         }
 
