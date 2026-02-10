@@ -534,7 +534,7 @@
 
         /* Landing Page Sections */
         .landing-hero {
-            background: white;
+            background: #F5F5F5;
             padding: 32px 0;
             text-align: center;
         }
@@ -851,6 +851,14 @@
             .result-cards {
                 grid-template-columns: 1fr;
             }
+
+            .landing-hero h1 {
+                font-size: 24px !important;
+            }
+
+            .landing-hero {
+                padding: 40px 20px !important;
+            }
         }
 
         /* Desktop optimizations */
@@ -903,7 +911,7 @@
 
             /* Landing page desktop */
             .landing-hero h1 {
-                font-size: 32px;
+                font-size: 40px !important;
             }
 
             .section-title {
@@ -1461,19 +1469,27 @@
         <!-- STEP 19: Landing Page Completa -->
         <div class="step" data-step="19" style="max-width: 900px; padding-top: 40px;">
             <!-- DOBRA 01: HERO SECTION -->
-            <div class="landing-hero">
-                <h1 style="font-size: 24px; margin-bottom: 16px; line-height: 1.3;">
-                    Seu consultório fatura R$30 mil+, mas você ainda não sabe quanto vai entrar mês que vem?
+            <div class="landing-hero" style="padding: 60px 20px;">
+                <div style="display: inline-block; background: #1A1A1A; color: white; padding: 10px 24px; border-radius: 24px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 32px;">
+                    PARABÉNS! VOCÊ FOI SELECIONADO
+                </div>
+
+                <h1 style="font-size: 32px; font-weight: 800; margin-bottom: 24px; line-height: 1.2; letter-spacing: -0.5px;">
+                    DIAGNÓSTICO LIBERADO | VAGAS LIMITADAS
                 </h1>
-                <p class="subtitle" style="margin-bottom: 24px;">
-                    Descubra em 30 minutos o que está travando seu crescimento — e o caminho para ter previsibilidade real no seu faturamento.
+
+                <p style="font-size: 16px; color: #444; margin-bottom: 32px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Exclusivo para consultórios que faturam acima de R$ 30 mil e que querem transformar marketing em ativo estratégico e não custo.
                 </p>
-                <button class="continue-btn" onclick="showBookingFrame()" id="showBookingBtn" style="margin: 0 auto 12px; max-width: 400px;">
-                    Agendar Meu Diagnóstico Gratuito
+
+                <p style="font-size: 16px; color: #1A1A1A; font-weight: 600; margin-bottom: 24px;">
+                    Agende agora seu diagnóstico gratuito de 30 minutos:
+                </p>
+
+                <button class="continue-btn" onclick="showBookingFrame()" id="showBookingBtn" style="margin: 0 auto; max-width: 500px; background: #1A1A1A; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; padding: 20px 32px; font-weight: 700;">
+                    AGENDAR MEU DIAGNÓSTICO GRATUITO
                     <span class="material-icons">arrow_forward</span>
                 </button>
-                <p style="font-size: 12px; color: #999;">Sessão de 30 min | Gratuito | Sem compromisso</p>
-                <p style="font-size: 13px; color: #CAAA82; margin-top: 16px; font-weight: 600;">+120 médicos já passaram pelo diagnóstico</p>
             </div>
 
             <!-- Booking Frame Container -->
