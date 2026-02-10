@@ -2196,9 +2196,15 @@
             const previewStep = urlParams.get('preview');
             if (previewStep !== null) {
                 const stepNum = parseInt(previewStep);
-                if (!isNaN(stepNum) && stepNum >= 0 && stepNum <= quizData.totalSteps) {
+                if (!isNaN(stepNum) && stepNum >= 0 && stepNum < quizData.totalSteps) {
+                    // Hide step 0 (landing page) first
+                    document.querySelector('[data-step="0"]').classList.remove('active');
+
+                    // Set current step and show it
                     quizData.currentStep = stepNum;
-                    showStep(stepNum);
+                    setTimeout(() => {
+                        showStep(stepNum);
+                    }, 100);
                     return; // Skip normal initialization
                 }
             }
