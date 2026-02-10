@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maior Desafio - MedGM</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1376176936827293');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1376176936827293&ev=PageView&noscript=1"
+    /></noscript>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 93%;"></div>
+            </div>
+        </div>
+
+        <button class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="content">
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Qual seu maior desafio hoje no consultório?</h1>
+
+            <div class="options">
+                <button class="option-button" onclick="selectOption('step15', 'Atrair mais pacientes particulares', 16)">Atrair mais pacientes particulares</button>
+                <button class="option-button" onclick="selectOption('step15', 'Diminuir dependência de convênio', 16)">Diminuir dependência de convênio</button>
+                <button class="option-button" onclick="selectOption('step15', 'Aumentar o ticket médio', 16)">Aumentar o ticket médio</button>
+                <button class="option-button" onclick="selectOption('step15', 'Fazer pacientes retornarem mais', 16)">Fazer pacientes retornarem mais</button>
+                <button class="option-button" onclick="selectOption('step15', 'Ter previsibilidade no faturamento', 16)">Ter previsibilidade no faturamento</button>
+                <button class="option-button" onclick="selectOption('step15', 'Treinar minha equipe comercial', 16)">Treinar minha equipe comercial</button>
+                <button class="option-button" onclick="selectOption('step15', 'Não sei por onde começar', 16)">Não sei por onde começar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

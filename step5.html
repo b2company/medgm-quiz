@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxa de Conversão - MedGM</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1376176936827293');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1376176936827293&ev=PageView&noscript=1"
+    /></noscript>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 31%;"></div>
+            </div>
+        </div>
+
+        <button class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="content">
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>De cada 10 pessoas que entram em contato, quantas efetivamente agendam consulta?</h1>
+
+            <div class="options">
+                <button class="option-button" onclick="selectOption('step5', '1 a 2 (10-20%)', 6)">1 a 2 (10-20%)</button>
+                <button class="option-button" onclick="selectOption('step5', '3 a 4 (30-40%)', 6)">3 a 4 (30-40%)</button>
+                <button class="option-button" onclick="selectOption('step5', '5 a 6 (50-60%)', 6)">5 a 6 (50-60%)</button>
+                <button class="option-button" onclick="selectOption('step5', '7 a 8 (70-80%)', 6)">7 a 8 (70-80%)</button>
+                <button class="option-button" onclick="selectOption('step5', '9 a 10 (90%+)', 6)">9 a 10 (90%+)</button>
+                <button class="option-button" onclick="selectOption('step5', 'Não tenho esse controle', 6)">Não tenho esse controle</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

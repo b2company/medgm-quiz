@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedGM - Diagnóstico de Faturamento</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1376176936827293');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1376176936827293&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+    <div class="container landing">
+        <div class="logo">MEDGM</div>
+        <div class="logo-subtitle">Medical Growth & Management</div>
+
+        <h1>Descubra quanto seu consultório está deixando na mesa</h1>
+        <p class="subtitle">Diagnóstico estratégico para médicos e profissionais da saúde.</p>
+
+        <div class="chart-container">
+            <div class="chart-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="chart-label">Seu potencial de crescimento</div>
+        </div>
+
+        <p class="validation-text">Analise os principais pontos de marketing e vendas do seu consultório em menos de 3 minutos.</p>
+
+        <button class="continue-button" onclick="startQuiz()">
+            Iniciar Diagnóstico Grátis
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <p style="margin-top: 24px; font-size: 11px; color: #999; letter-spacing: 1px; text-transform: uppercase;">
+            Validado em consultórios de todo o Brasil
+        </p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function startQuiz() {
+            localStorage.removeItem('quizAnswers');
+            fbq('track', 'InitiateCheckout');
+            window.location.href = 'step1.html';
+        }
+    </script>
+</body>
+</html>

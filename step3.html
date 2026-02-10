@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disponibilidade - MedGM</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1376176936827293');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1376176936827293&ev=PageView&noscript=1"
+    /></noscript>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 18%;"></div>
+            </div>
+        </div>
+
+        <button class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="content">
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Qual sua disponibilidade para implementar mudanças no seu consultório?</h1>
+
+            <div class="options">
+                <button class="option-button" onclick="selectOption('step3', 'Imediatamente, é prioridade máxima', 4)">Imediatamente, é prioridade máxima</button>
+                <button class="option-button" onclick="selectOption('step3', 'Nos próximos 30 dias', 4)">Nos próximos 30 dias</button>
+                <button class="option-button" onclick="selectOption('step3', 'Nos próximos 3 meses', 4)">Nos próximos 3 meses</button>
+                <button class="option-button" onclick="selectOption('step3', 'Ainda estou só pesquisando', 4)">Ainda estou só pesquisando</button>
+                <button class="option-button" onclick="selectOption('step3', 'Não tenho certeza se preciso disso', 4)">Não tenho certeza se preciso disso</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Métricas - MedGM</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1376176936827293');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1376176936827293&ev=PageView&noscript=1"
+    /></noscript>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+        </div>
+
+        <button class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="content">
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Você controla as métricas comerciais do seu consultório?</h1>
+
+            <div class="options">
+                <button class="option-button" onclick="selectOption('step12', 'Sim, acompanho tudo (leads, agendamentos, conversão, ticket, retorno)', 13)">Sim, acompanho tudo (leads, agendamentos, conversão, ticket, retorno)</button>
+                <button class="option-button" onclick="selectOption('step12', 'Controlo algumas coisas básicas', 13)">Controlo algumas coisas básicas</button>
+                <button class="option-button" onclick="selectOption('step12', 'Só olho o faturamento no final do mês', 13)">Só olho o faturamento no final do mês</button>
+                <button class="option-button" onclick="selectOption('step12', 'Não controlo nada / Delego para contador', 13)">Não controlo nada / Delego para contador</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
