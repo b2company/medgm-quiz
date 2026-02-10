@@ -2246,14 +2246,25 @@
             if (previewStep !== null) {
                 const stepNum = parseInt(previewStep);
                 if (!isNaN(stepNum) && stepNum >= 0 && stepNum < quizData.totalSteps) {
-                    // Hide step 0 (landing page) first
-                    document.querySelector('[data-step="0"]').classList.remove('active');
+                    console.log('Preview mode activated for step:', stepNum);
 
-                    // Set current step and show it
+                    // Hide ALL steps first
+                    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+
+                    // Set current step
                     quizData.currentStep = stepNum;
-                    setTimeout(() => {
-                        showStep(stepNum);
-                    }, 100);
+
+                    // Show target step directly (no showStep to avoid tracking)
+                    const targetStep = document.querySelector(`[data-step="${stepNum}"]`);
+                    if (targetStep) {
+                        targetStep.classList.add('active');
+                        updateProgressBar();
+                        window.scrollTo(0, 0);
+                        console.log('Preview step displayed:', stepNum);
+                    } else {
+                        console.error('Step element not found:', stepNum);
+                    }
+
                     return; // Skip normal initialization
                 }
             }
