@@ -646,57 +646,57 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
-        /* Landing Page Sections */
+        /* Landing Page Sections - Redesign Moderno */
         .landing-hero {
-            background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.95) 100%);
-            backdrop-filter: blur(20px);
-            padding: 60px 24px;
+            background: linear-gradient(180deg, rgba(202, 170, 130, 0.08) 0%, transparent 100%);
+            padding: 100px 40px 80px;
             text-align: center;
-            border-radius: 24px;
-            margin: 0 0 40px 0;
-            border: 1px solid rgba(202, 170, 130, 0.2);
+            margin: 0 -20px;
+            border-bottom: 1px solid rgba(202, 170, 130, 0.15);
         }
 
         .landing-section {
-            padding: 60px 24px;
+            padding: 100px 40px;
+            margin: 0 -20px;
             background: transparent;
+            border-bottom: 1px solid rgba(202, 170, 130, 0.08);
         }
 
         .landing-section-dark {
-            background: rgba(26, 26, 26, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(202, 170, 130, 0.15);
-            border-radius: 24px;
-            color: white;
-            padding: 60px 24px;
-            margin: 40px 0;
+            background: linear-gradient(180deg, rgba(202, 170, 130, 0.04) 0%, rgba(202, 170, 130, 0.02) 100%);
+            padding: 100px 40px;
+            margin: 0 -20px;
+            border-top: 1px solid rgba(202, 170, 130, 0.12);
+            border-bottom: 1px solid rgba(202, 170, 130, 0.12);
         }
 
         .landing-section-light {
-            background: rgba(15, 15, 15, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(202, 170, 130, 0.15);
-            border-radius: 24px;
-            padding: 60px 24px;
-            margin: 40px 0;
+            background: rgba(15, 15, 15, 0.4);
+            padding: 100px 40px;
+            margin: 0 -20px;
+            border-top: 1px solid rgba(202, 170, 130, 0.08);
+            border-bottom: 1px solid rgba(202, 170, 130, 0.08);
         }
 
         .section-title {
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 36px;
+            font-weight: 800;
             text-align: center;
-            margin-bottom: 20px;
-            line-height: 1.3;
+            margin-bottom: 16px;
+            line-height: 1.2;
             color: #FFFFFF;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
         }
 
         .section-subtitle {
-            font-size: 17px;
+            font-size: 18px;
             text-align: center;
-            color: #FFFFFF;
-            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 60px;
             line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
             opacity: 0.95;
             max-width: 700px;
             margin-left: auto;
@@ -712,116 +712,126 @@
         .pain-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
-            margin: 24px 0;
+            gap: 24px;
+            margin: 40px auto;
+            max-width: 800px;
         }
 
         .pain-card {
-            background: rgba(26, 26, 26, 0.6);
+            background: rgba(26, 26, 26, 0.3);
             backdrop-filter: blur(10px);
-            padding: 28px 24px;
-            border-radius: 20px;
-            border: 2px solid rgba(202, 170, 130, 0.25);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 40px 32px;
+            border-radius: 16px;
+            border-left: 3px solid #CAAA82;
+            border-right: 1px solid rgba(202, 170, 130, 0.1);
+            border-top: 1px solid rgba(202, 170, 130, 0.1);
+            border-bottom: 1px solid rgba(202, 170, 130, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
-        .pain-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #CAAA82, #FFEBC3);
-            border-radius: 20px 20px 0 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
         .pain-card:hover {
-            background: rgba(26, 26, 26, 0.8);
-            border-color: #CAAA82;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.3);
-        }
-
-        .pain-card:hover::before {
-            opacity: 1;
+            background: rgba(26, 26, 26, 0.5);
+            border-left-color: #FFEBC3;
+            border-left-width: 4px;
+            transform: translateX(4px);
+            box-shadow: -8px 0 24px rgba(202, 170, 130, 0.15);
         }
 
         .pain-card h3 {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: #CAAA82;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
         }
 
         .pain-card p {
-            font-size: 15px;
-            color: #FFFFFF;
-            line-height: 1.6;
-            opacity: 0.95;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
         }
 
         /* Methodology Grid */
         .method-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin: 24px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        @media (max-width: 768px) {
+            .method-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
         }
 
         .method-card {
-            background: rgba(26, 26, 26, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 28px 24px;
-            border-radius: 20px;
-            border-left: 5px solid #CAAA82;
-            border: 2px solid rgba(202, 170, 130, 0.25);
-            border-left: 5px solid #CAAA82;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(26, 26, 26, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 40px 36px;
+            border-radius: 16px;
+            border: 1px solid rgba(202, 170, 130, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #CAAA82 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
         .method-card:hover {
-            background: rgba(26, 26, 26, 0.8);
-            border-color: #CAAA82;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.3);
+            background: rgba(26, 26, 26, 0.4);
+            border-color: rgba(202, 170, 130, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .method-card:hover::before {
+            opacity: 1;
         }
 
         .method-number {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #CAAA82 0%, #8B7355 100%);
-            color: white;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 32px;
-            text-align: center;
-            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #CAAA82 0%, #B89968 100%);
+            color: #1A1A1A;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 20px;
+            margin-bottom: 20px;
         }
 
         .method-card h3 {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
         }
 
         .method-card p {
-            font-size: 15px;
-            color: #FFFFFF;
-            line-height: 1.6;
-            margin-bottom: 8px;
-            opacity: 0.95;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
 
         .method-result {
-            font-size: 13px;
+            font-size: 15px;
             color: #CAAA82;
             font-weight: 600;
             font-style: italic;
@@ -830,9 +840,23 @@
         /* Benefits Grid - Dark BG */
         .benefits-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            margin: 24px 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px auto;
+            max-width: 1100px;
+        }
+
+        @media (max-width: 992px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
 
         .benefit-card-dark {
