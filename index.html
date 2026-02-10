@@ -1098,6 +1098,11 @@
             line-height: 1.6;
         }
 
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .faq-item {
             background: #FFFFFF;
             padding: 28px 32px;
@@ -2108,11 +2113,49 @@
                 </div>
             </div>
 
-            <!-- DOBRA 06: FAQ -->
+            <!-- DOBRA 06: CTA FINAL (movido para antes do FAQ) -->
+            <div class="landing-section-dark" style="padding-bottom: 60px;">
+                <div class="cta-final">
+                    <div class="urgency-badge">⚠️ Vagas Limitadas</div>
+
+                    <h2>Seu diagnóstico está reservado</h2>
+                    <p>Agende agora sua sessão gratuita de 30 minutos com um consultor especializado</p>
+
+                    <div class="info-cards">
+                        <div class="info-card-item">
+                            <span class="material-icons">schedule</span>
+                            <p>Duração</p>
+                            <strong>30 minutos</strong>
+                        </div>
+                        <div class="info-card-item">
+                            <span class="material-icons">payments</span>
+                            <p>Investimento</p>
+                            <strong>GRATUITO</strong>
+                        </div>
+                        <div class="info-card-item">
+                            <span class="material-icons">event_available</span>
+                            <p>Horários</p>
+                            <strong>Limitados</strong>
+                        </div>
+                    </div>
+
+                    <button class="continue-btn" onclick="document.getElementById('showBookingBtn').scrollIntoView({behavior: 'smooth'})" style="background: #CAAA82; color: #1A1A1A; max-width: 400px; margin: 0 auto;">
+                        Agendar Meu Diagnóstico Gratuito
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+
+                    <p style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 16px;">
+                        Ao clicar, você será direcionado para escolher o melhor horário na sua agenda
+                    </p>
+                </div>
+            </div>
+
+            <!-- FAQ - Movido para o final -->
             <div class="landing-section-light">
                 <h2 class="section-title">Perguntas Frequentes</h2>
 
-                <div class="faq-item active" onclick="toggleFaq(this)">
+                <div class="faq-container">
+                    <div class="faq-item active" onclick="toggleFaq(this)">
                     <div class="faq-question">
                         <span>Quanto tempo dura o diagnóstico?</span>
                         <span class="material-icons">expand_more</span>
@@ -2182,46 +2225,11 @@
                     </div>
                 </div>
 
-                <p class="text-center" style="font-size: 14px; color: #FFFFFF; margin-top: 32px;">
+                </div>
+
+                <p class="text-center" style="font-size: 14px; color: #666666; margin-top: 32px; max-width: 800px; margin-left: auto; margin-right: auto;">
                     Ainda tem dúvidas? Agende o diagnóstico e converse diretamente com nosso consultor.
                 </p>
-            </div>
-
-            <!-- DOBRA 07: CTA FINAL -->
-            <div class="landing-section-dark" style="padding-bottom: 60px;">
-                <div class="cta-final">
-                    <div class="urgency-badge">⚠️ Vagas Limitadas</div>
-
-                    <h2>Seu diagnóstico está reservado</h2>
-                    <p>Agende agora sua sessão gratuita de 30 minutos com um consultor especializado</p>
-
-                    <div class="info-cards">
-                        <div class="info-card-item">
-                            <span class="material-icons">schedule</span>
-                            <p>Duração</p>
-                            <strong>30 minutos</strong>
-                        </div>
-                        <div class="info-card-item">
-                            <span class="material-icons">payments</span>
-                            <p>Investimento</p>
-                            <strong>GRATUITO</strong>
-                        </div>
-                        <div class="info-card-item">
-                            <span class="material-icons">event_available</span>
-                            <p>Horários</p>
-                            <strong>Limitados</strong>
-                        </div>
-                    </div>
-
-                    <button class="continue-btn" onclick="document.getElementById('showBookingBtn').scrollIntoView({behavior: 'smooth'})" style="background: #CAAA82; color: #1A1A1A; max-width: 400px; margin: 0 auto;">
-                        Agendar Meu Diagnóstico Gratuito
-                        <span class="material-icons">arrow_forward</span>
-                    </button>
-
-                    <p style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 16px;">
-                        Ao clicar, você será direcionado para escolher o melhor horário na sua agenda
-                    </p>
-                </div>
             </div>
 
             <!-- FOOTER -->
