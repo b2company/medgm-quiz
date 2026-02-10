@@ -280,29 +280,26 @@
             cursor: not-allowed;
         }
 
-        /* Insight Box */
-        .insight-box {
-            background: white;
-            border-radius: 24px;
-            padding: 32px 28px;
-            margin: 24px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        /* Insight Page */
+        .insight-page {
+            justify-content: center;
+            text-align: center;
         }
 
         .insight-icon {
-            width: 64px;
-            height: 64px;
+            width: 80px;
+            height: 80px;
             background: #1A1A1A;
-            border-radius: 16px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
+            margin: 0 auto 32px;
         }
 
         .insight-icon .material-icons {
-            color: white;
-            font-size: 32px;
+            color: #CAAA82;
+            font-size: 40px;
         }
 
         .insight-badge {
@@ -315,15 +312,15 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .insight-text {
-            font-size: 18px;
+            font-size: 22px;
             line-height: 1.5;
             color: #1A1A1A;
-            font-weight: 500;
-            text-align: center;
+            font-weight: 600;
+            margin: 32px 0;
         }
 
         /* Loading */
@@ -691,7 +688,7 @@
             </div>
         </div>
 
-        <!-- STEP 3: Percentual Convênio + Insight -->
+        <!-- STEP 3: Percentual Convênio -->
         <div class="step" data-step="3">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
@@ -708,14 +705,21 @@
                 <button class="option-btn" onclick="selectOption('convenio', 'Menos de 30% convênio', 80)">Menos de 30% convênio</button>
                 <button class="option-btn" onclick="selectOption('convenio', '100% particular', 100)">100% particular</button>
             </div>
+        </div>
 
-            <div class="insight-box text-center">
-                <div class="insight-icon">
-                    <span class="material-icons">warning</span>
-                </div>
-                <div class="insight-badge">Insight B2</div>
-                <p class="insight-text">"Médicos que dependem mais de 50% de convênio faturam em média 3x menos que médicos majoritariamente particulares, mesmo trabalhando as mesmas horas."</p>
+        <!-- STEP 4: INSIGHT 1 -->
+        <div class="step insight-page" data-step="4">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="insight-icon">
+                <span class="material-icons">warning</span>
             </div>
+
+            <div class="insight-badge">Insight MedGM</div>
+
+            <p class="insight-text">"Médicos que dependem mais de 50% de convênio faturam em média 3x menos que médicos majoritariamente particulares, mesmo trabalhando as mesmas horas."</p>
 
             <button class="continue-btn" onclick="nextStep()">
                 Continuar
@@ -723,8 +727,8 @@
             </button>
         </div>
 
-        <!-- STEP 4: Leads por Mês -->
-        <div class="step" data-step="4">
+        <!-- STEP 5: Leads por Mês -->
+        <div class="step" data-step="5">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -742,8 +746,8 @@
             </div>
         </div>
 
-        <!-- STEP 5: Taxa de Conversão + Insight -->
-        <div class="step" data-step="5">
+        <!-- STEP 6: Taxa de Conversão -->
+        <div class="step" data-step="6">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -759,14 +763,21 @@
                 <button class="option-btn" onclick="selectOption('conversao', '9 a 10 (90%+)', 100)">9 a 10 (90%+)</button>
                 <button class="option-btn" onclick="selectOption('conversao', 'Não tenho esse controle', 0)">Não tenho esse controle</button>
             </div>
+        </div>
 
-            <div class="insight-box text-center">
-                <div class="insight-icon">
-                    <span class="material-icons">error</span>
-                </div>
-                <div class="insight-badge">Realidade Comercial</div>
-                <p class="insight-text">"67% dos leads que entram em contato com consultórios médicos NÃO conseguem agendar. O problema não é falta de pacientes, é perda de oportunidades no processo."</p>
+        <!-- STEP 7: INSIGHT 2 -->
+        <div class="step insight-page" data-step="7">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="insight-icon">
+                <span class="material-icons">error</span>
             </div>
+
+            <div class="insight-badge">Realidade Comercial</div>
+
+            <p class="insight-text">"67% dos leads que entram em contato com consultórios médicos NÃO conseguem agendar. O problema não é falta de pacientes, é perda de oportunidades no processo."</p>
 
             <button class="continue-btn" onclick="nextStep()">
                 Continuar
@@ -774,8 +785,8 @@
             </button>
         </div>
 
-        <!-- STEP 6: Roteiro Secretária -->
-        <div class="step" data-step="6">
+        <!-- STEP 8: Roteiro Secretária -->
+        <div class="step" data-step="8">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -792,8 +803,8 @@
             </div>
         </div>
 
-        <!-- STEP 7: Retorno de Pacientes + Insight -->
-        <div class="step" data-step="7">
+        <!-- STEP 9: Retorno de Pacientes -->
+        <div class="step" data-step="9">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -807,14 +818,21 @@
                 <button class="option-btn" onclick="selectOption('retorno', 'Poucos retornam, maioria vem só 1 vez', 30)">Poucos retornam, maioria vem só 1 vez</button>
                 <button class="option-btn" onclick="selectOption('retorno', 'Não tenho esse controle', 0)">Não tenho esse controle</button>
             </div>
+        </div>
 
-            <div class="insight-box text-center">
-                <div class="insight-icon">
-                    <span class="material-icons">sync</span>
-                </div>
-                <div class="insight-badge">Maximização de Valor</div>
-                <p class="insight-text">"O maior desperdício de um consultório não é perder pacientes novos. É não maximizar o valor dos que já tem. Aumentar a taxa de retorno pode triplicar seu faturamento."</p>
+        <!-- STEP 10: INSIGHT 3 -->
+        <div class="step insight-page" data-step="10">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="insight-icon">
+                <span class="material-icons">sync</span>
             </div>
+
+            <div class="insight-badge">Maximização de Valor</div>
+
+            <p class="insight-text">"O maior desperdício de um consultório não é perder pacientes novos. É não maximizar o valor dos que já tem. Aumentar a taxa de retorno pode triplicar seu faturamento."</p>
 
             <button class="continue-btn" onclick="nextStep()">
                 Continuar
@@ -822,8 +840,8 @@
             </button>
         </div>
 
-        <!-- STEP 8: Controle de Métricas -->
-        <div class="step" data-step="8">
+        <!-- STEP 11: Controle de Métricas -->
+        <div class="step" data-step="11">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -839,8 +857,8 @@
             </div>
         </div>
 
-        <!-- STEP 9: Maior Desafio -->
-        <div class="step" data-step="9">
+        <!-- STEP 12: Maior Desafio -->
+        <div class="step" data-step="12">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -859,8 +877,8 @@
             </div>
         </div>
 
-        <!-- STEP 10: Meta de Faturamento -->
-        <div class="step" data-step="10">
+        <!-- STEP 13: Meta de Faturamento -->
+        <div class="step" data-step="13">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -877,8 +895,8 @@
             </button>
         </div>
 
-        <!-- STEP 11: Disponibilidade -->
-        <div class="step" data-step="11">
+        <!-- STEP 14: Disponibilidade -->
+        <div class="step" data-step="14">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -895,8 +913,8 @@
             </div>
         </div>
 
-        <!-- STEP 12: Formulário de Captura -->
-        <div class="step" data-step="12">
+        <!-- STEP 15: Formulário de Captura -->
+        <div class="step" data-step="15">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
@@ -933,14 +951,14 @@
             </button>
         </div>
 
-        <!-- STEP 13: Loading / Análise -->
-        <div class="step loading-container" data-step="13">
+        <!-- STEP 16: Loading / Análise -->
+        <div class="step loading-container" data-step="16">
             <div class="loading-icon">
                 <span class="material-icons">analytics</span>
             </div>
 
             <h1>Analisando suas respostas</h1>
-            <p class="subtitle">Metodologia B2 Company</p>
+            <p class="subtitle">Metodologia MedGM</p>
 
             <div class="loading-bar">
                 <div class="loading-fill" id="loadingFill"></div>
@@ -951,8 +969,8 @@
             <p class="seal">Estratégia validada em operações médicas</p>
         </div>
 
-        <!-- STEP 14: Resultado -->
-        <div class="step" data-step="14">
+        <!-- STEP 17: Resultado -->
+        <div class="step" data-step="17">
             <div class="result-badge text-center">Medical Diagnostic Report</div>
 
             <h1 class="text-center">Doutor(a), seu diagnóstico está pronto:</h1>
@@ -1003,8 +1021,8 @@
             </button>
         </div>
 
-        <!-- STEP 15: Oferta / Presente -->
-        <div class="step" data-step="15">
+        <!-- STEP 18: Oferta / Presente -->
+        <div class="step" data-step="18">
             <div class="gift-card">
                 <div class="gift-icon">
                     <span class="material-icons">card_giftcard</span>
@@ -1012,9 +1030,9 @@
 
                 <div class="gift-badge">Válido por 24h</div>
 
-                <h1 style="color: white; margin-bottom: 16px;">Parabéns! Você ganhou uma reunião de diagnóstico gratuita com um consultor da B2 Company!</h1>
+                <h1 style="color: white; margin-bottom: 16px;">Parabéns! Você ganhou uma reunião de diagnóstico gratuita com um consultor da MedGM!</h1>
 
-                <p style="font-size: 14px; margin-bottom: 8px; opacity: 0.9;">Benefício Exclusivo B2</p>
+                <p style="font-size: 14px; margin-bottom: 8px; opacity: 0.9;">Benefício Exclusivo MedGM</p>
                 <p style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">DIAGNÓSTICO VIP</p>
                 <p style="font-size: 15px; opacity: 0.9;">Análise personalizada de processos e faturamento para sua especialidade.</p>
             </div>
@@ -1027,8 +1045,8 @@
             <p class="text-center seal">Clique acima para prosseguir para o agendamento</p>
         </div>
 
-        <!-- STEP 16: Agendamento + Sales Page -->
-        <div class="step" data-step="16">
+        <!-- STEP 19: Agendamento + Sales Page -->
+        <div class="step" data-step="19">
             <div class="booking-section text-center">
                 <div class="result-badge">Parabéns! Você foi selecionado</div>
 
@@ -1099,7 +1117,7 @@
                     </p>
                 </div>
 
-                <h2 class="text-center mt-4 mb-4">A B2 Company vem ajudando médicos a transformarem seus consultórios em negócios lucrativos e previsíveis</h2>
+                <h2 class="text-center mt-4 mb-4">A MedGM vem ajudando médicos a transformarem seus consultórios em negócios lucrativos e previsíveis</h2>
 
                 <p class="text-center subtitle mb-4">Através de uma metodologia que atua nas 4 alavancas de crescimento de um consultório médico, ajudamos você a:</p>
 
@@ -1173,7 +1191,7 @@
                         <span class="material-icons">expand_more</span>
                     </div>
                     <div class="faq-answer">
-                        Um consultor especializado da B2 Company, com experiência em consultórios médicos e implementação de sistemas de marketing e vendas para o setor de saúde.
+                        Um consultor especializado da MedGM, com experiência em consultórios médicos e implementação de sistemas de marketing e vendas para o setor de saúde.
                     </div>
                 </div>
 
@@ -1250,18 +1268,18 @@
                         Agende agora sua sessão gratuita de 30 min com um consultor especializado.
                     </p>
 
-                    <div style="display: flex; gap: 16px; justify-content: center; margin: 24px 0;">
-                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; max-width: 180px;">
+                    <div style="display: flex; gap: 16px; justify-content: center; margin: 24px 0; flex-wrap: wrap;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; min-width: 150px; max-width: 180px;">
                             <span class="material-icons" style="color: #CAAA82; font-size: 32px;">schedule</span>
                             <p style="font-size: 12px; color: #666; margin-top: 8px;">Duração</p>
                             <p style="font-weight: 600;">30 minutos</p>
                         </div>
-                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; max-width: 180px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; min-width: 150px; max-width: 180px;">
                             <span class="material-icons" style="color: #CAAA82; font-size: 32px;">payments</span>
                             <p style="font-size: 12px; color: #666; margin-top: 8px;">Investimento</p>
                             <p style="font-weight: 600;">GRATUITO</p>
                         </div>
-                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; max-width: 180px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; min-width: 150px; max-width: 180px;">
                             <span class="material-icons" style="color: #CAAA82; font-size: 32px;">event_available</span>
                             <p style="font-size: 12px; color: #666; margin-top: 8px;">Horários</p>
                             <p style="font-weight: 600;">Limitados</p>
@@ -1278,8 +1296,8 @@
 
                 <footer style="text-align: center; margin-top: 80px; padding: 40px 20px; border-top: 1px solid #E0E0E0;">
                     <div class="logo" style="font-size: 32px;">MEDGM</div>
-                    <p style="color: #666; font-size: 14px; margin: 8px 0;">Marketing e Vendas para Consultórios Médicos</p>
-                    <p style="color: #999; font-size: 12px; margin-top: 20px;">© 2025 B2 Company. Todos os direitos reservados.</p>
+                    <p style="color: #666; font-size: 14px; margin: 8px 0;">Medical Growth & Management</p>
+                    <p style="color: #999; font-size: 12px; margin-top: 20px;">© 2025 MedGM. Todos os direitos reservados.</p>
                     <p style="color: #999; font-size: 12px;">Termos de Uso | Política de Privacidade</p>
                 </footer>
             </div>
@@ -1290,7 +1308,7 @@
         // Quiz Data
         const quizData = {
             currentStep: 0,
-            totalSteps: 17,
+            totalSteps: 20,
             answers: {}
         };
 
@@ -1338,7 +1356,7 @@
             fbq('trackCustom', 'QuizStep', {step: quizData.currentStep});
             quizData.currentStep++;
 
-            if (quizData.currentStep === 13) {
+            if (quizData.currentStep === 16) {
                 startLoading();
             } else {
                 showStep(quizData.currentStep);
@@ -1372,7 +1390,7 @@
             }
 
             // Auto-advance for certain steps
-            const autoAdvanceSteps = [1, 2, 4, 6, 8, 9, 11];
+            const autoAdvanceSteps = [1, 2, 3, 5, 6, 8, 9, 11, 12, 14];
             if (autoAdvanceSteps.includes(quizData.currentStep)) {
                 setTimeout(() => nextStep(), 300);
             }
@@ -1393,7 +1411,7 @@
 
         // Loading Animation
         function startLoading() {
-            showStep(13);
+            showStep(16);
             const loadingFill = document.getElementById('loadingFill');
             const loadingText = document.getElementById('loadingText');
             let progress = 0;
