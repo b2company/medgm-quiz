@@ -658,6 +658,28 @@
             .step {
                 padding: 80px 20px 40px;
             }
+
+            .capture-card {
+                padding: 48px 40px;
+            }
+
+            .capture-steps {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .capture-step-item {
+                flex-direction: column;
+                flex: 1;
+                text-align: center;
+                align-items: center;
+            }
+
+            .capture-contact-methods {
+                flex-direction: row;
+                justify-content: center;
+                gap: 32px;
+            }
         }
 
         /* Utility */
@@ -679,6 +701,116 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             margin-top: 24px;
+        }
+
+        /* Capture Page Styles */
+        .capture-page {
+            max-width: 800px;
+        }
+
+        .capture-badge {
+            display: inline-block;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, rgba(202, 170, 130, 0.1) 0%, rgba(202, 170, 130, 0.05) 100%);
+            border: 1px solid rgba(202, 170, 130, 0.3);
+            color: #CAAA82;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .capture-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            margin-top: 24px;
+        }
+
+        .capture-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .capture-step-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .capture-step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #CAAA82 0%, #8B7355 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .capture-step-content h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin-bottom: 4px;
+        }
+
+        .capture-step-content p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .capture-contact-info {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid #E0E0E0;
+            text-align: center;
+        }
+
+        .capture-contact-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin-bottom: 16px;
+        }
+
+        .capture-contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .capture-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .capture-contact-item .material-icons {
+            color: #CAAA82;
+            font-size: 20px;
+        }
+
+        .capture-note {
+            font-size: 13px;
+            color: #999;
+            font-style: italic;
         }
     </style>
 </head>
@@ -957,7 +1089,7 @@
             <h1>Qual sua meta de faturamento mensal para os próximos 12 meses?</h1>
 
             <div class="input-group">
-                <input type="text" class="input-field" id="metaFaturamento" placeholder="Ex: 100000" inputmode="numeric">
+                <input type="text" class="input-field" id="metaFaturamento" placeholder="R$ 100.000" inputmode="numeric">
             </div>
 
             <button class="continue-btn" id="metaBtn" disabled onclick="saveMetaAndNext()">
@@ -985,41 +1117,85 @@
         </div>
 
         <!-- STEP 15: Formulário de Captura -->
-        <div class="step" data-step="15">
+        <div class="step capture-page" data-step="15">
             <button class="back-btn" onclick="previousStep()">
                 <span class="material-icons">arrow_back</span>
             </button>
 
-            <h1>Onde enviamos seu diagnóstico?</h1>
-            <p class="subtitle" style="background: #F0E8DE; padding: 12px 20px; border-radius: 12px; color: #6B5A47; font-weight: 500;">
-                Preencha abaixo e clique em "CONTINUAR"
-            </p>
-
-            <div style="margin: 24px 0; min-height: 600px;">
-                <iframe
-                    src="https://admin.b2company.co/widget/form/pdDLJ9xMhKhlWCS9hJVV"
-                    style="width:100%;height:600px;border:none;border-radius:12px"
-                    id="inline-pdDLJ9xMhKhlWCS9hJVV"
-                    data-layout="{'id':'INLINE'}"
-                    data-trigger-type="alwaysShow"
-                    data-trigger-value=""
-                    data-activation-type="alwaysActivated"
-                    data-activation-value=""
-                    data-deactivation-type="neverDeactivate"
-                    data-deactivation-value=""
-                    data-form-name="MEDGM0226ISC - Formulário de captura de leads"
-                    data-height="1015"
-                    data-layout-iframe-id="inline-pdDLJ9xMhKhlWCS9hJVV"
-                    data-form-id="pdDLJ9xMhKhlWCS9hJVV"
-                    title="MEDGM0226ISC - Formulário de captura de leads">
-                </iframe>
-                <script src="https://admin.b2company.co/js/form_embed.js"></script>
+            <div class="capture-header text-center">
+                <div class="capture-badge">Exclusivo para consultórios qualificados</div>
+                <h1 style="margin-bottom: 16px;">Onde enviamos seu diagnóstico?</h1>
+                <p class="subtitle" style="max-width: 600px; margin: 0 auto 32px;">
+                    Preencha o formulário abaixo e receba seu diagnóstico personalizado de crescimento. Todos os seus dados estarão seguros.
+                </p>
             </div>
 
-            <button class="continue-btn" id="formBtn" disabled onclick="formSubmitted()">
-                Continuar (aguarde 5s)
-                <span class="material-icons">arrow_forward</span>
-            </button>
+            <div class="capture-card">
+                <div class="capture-steps">
+                    <div class="capture-step-item">
+                        <div class="capture-step-number">1</div>
+                        <div class="capture-step-content">
+                            <h3>Preencha seus dados</h3>
+                            <p>Envie suas informações de contato no formulário abaixo</p>
+                        </div>
+                    </div>
+                    <div class="capture-step-item">
+                        <div class="capture-step-number">2</div>
+                        <div class="capture-step-content">
+                            <h3>Receba seu diagnóstico</h3>
+                            <p>Análise personalizada baseada nas suas respostas</p>
+                        </div>
+                    </div>
+                    <div class="capture-step-item">
+                        <div class="capture-step-number">3</div>
+                        <div class="capture-step-content">
+                            <h3>Agende sua sessão gratuita</h3>
+                            <p>Reunião de 30 minutos com especialista MedGM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin: 32px 0; min-height: 600px;">
+                    <iframe
+                        src="https://admin.b2company.co/widget/form/pdDLJ9xMhKhlWCS9hJVV"
+                        style="width:100%;height:600px;border:none;border-radius:12px"
+                        id="inline-pdDLJ9xMhKhlWCS9hJVV"
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-trigger-value=""
+                        data-activation-type="alwaysActivated"
+                        data-activation-value=""
+                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-value=""
+                        data-form-name="MEDGM0226ISC - Formulário de captura de leads"
+                        data-height="1015"
+                        data-layout-iframe-id="inline-pdDLJ9xMhKhlWCS9hJVV"
+                        data-form-id="pdDLJ9xMhKhlWCS9hJVV"
+                        title="MEDGM0226ISC - Formulário de captura de leads">
+                    </iframe>
+                    <script src="https://admin.b2company.co/js/form_embed.js"></script>
+                </div>
+
+                <button class="continue-btn" id="formBtn" disabled onclick="formSubmitted()">
+                    Continuar (aguarde 5s)
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+
+                <div class="capture-contact-info">
+                    <p class="capture-contact-title">Prefere falar diretamente?</p>
+                    <div class="capture-contact-methods">
+                        <div class="capture-contact-item">
+                            <span class="material-icons">phone</span>
+                            <span>WhatsApp: +55 21 96511-6943</span>
+                        </div>
+                        <div class="capture-contact-item">
+                            <span class="material-icons">email</span>
+                            <span>contato@medgm.com.br</span>
+                        </div>
+                    </div>
+                    <p class="capture-note">Atendimento 100% remoto para todo o Brasil</p>
+                </div>
+            </div>
         </div>
 
         <!-- STEP 16: Loading / Análise -->
@@ -1387,15 +1563,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateProgressBar();
 
-            // Meta input handler
+            // Meta input handler with R$ formatting
             const metaInput = document.getElementById('metaFaturamento');
             const metaBtn = document.getElementById('metaBtn');
 
             if (metaInput && metaBtn) {
                 metaInput.addEventListener('input', function() {
                     let value = this.value.replace(/\D/g, '');
-                    this.value = value;
-                    metaBtn.disabled = value.length === 0;
+
+                    if (value.length > 0) {
+                        // Format with thousands separator
+                        value = parseInt(value).toLocaleString('pt-BR');
+                        this.value = 'R$ ' + value;
+                        metaBtn.disabled = false;
+                    } else {
+                        this.value = '';
+                        metaBtn.disabled = true;
+                    }
                 });
             }
 
@@ -1470,7 +1654,9 @@
         // Save Meta and Next
         function saveMetaAndNext() {
             const meta = document.getElementById('metaFaturamento').value;
-            quizData.answers.metaFaturamento = meta;
+            // Save raw number without R$ and formatting
+            const rawValue = meta.replace(/\D/g, '');
+            quizData.answers.metaFaturamento = rawValue;
             nextStep();
         }
 
