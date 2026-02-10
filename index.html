@@ -836,10 +836,19 @@
         }
 
         .benefit-card-dark {
-            background: white;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
             padding: 24px 20px;
             border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card-dark:hover {
+            background: rgba(26, 26, 26, 0.8);
+            border-color: #CAAA82;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.3);
         }
 
         .benefit-card-dark .material-icons {
@@ -851,14 +860,15 @@
         .benefit-card-dark h3 {
             font-size: 16px;
             font-weight: 700;
-            color: #1A1A1A;
+            color: #FFFFFF;
             margin-bottom: 8px;
         }
 
         .benefit-card-dark p {
             font-size: 14px;
-            color: rgba(26, 26, 26, 0.8);
+            color: #FFFFFF;
             line-height: 1.5;
+            opacity: 0.95;
         }
 
         /* CTA Final Dark */
@@ -990,16 +1000,24 @@
         }
 
         .faq-item {
-            background: white;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
             padding: 24px;
             border-radius: 12px;
             margin-bottom: 12px;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 2px solid rgba(202, 170, 130, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(26, 26, 26, 0.8);
+            border-color: #CAAA82;
         }
 
         .faq-question {
             font-weight: 600;
+            color: #FFFFFF;
             font-size: 16px;
             display: flex;
             justify-content: space-between;
@@ -1010,9 +1028,10 @@
         .faq-answer {
             display: none;
             margin-top: 16px;
-            color: rgba(255, 255, 255, 0.85);
+            color: #FFFFFF;
             line-height: 1.6;
             font-size: 15px;
+            opacity: 0.95;
         }
 
         .faq-item.active .faq-answer {
