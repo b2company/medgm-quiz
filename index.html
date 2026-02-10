@@ -1500,20 +1500,7 @@
                 });
             }
 
-            // Form button delay
-            const formBtn = document.getElementById('formBtn');
-            if (formBtn) {
-                let countdown = 5;
-                const interval = setInterval(() => {
-                    countdown--;
-                    formBtn.textContent = `Continuar (${countdown}s)`;
-                    if (countdown <= 0) {
-                        clearInterval(interval);
-                        formBtn.disabled = false;
-                        formBtn.innerHTML = 'Continuar <span class="material-icons">arrow_forward</span>';
-                    }
-                }, 1000);
-            }
+            // Form button delay will be triggered when step 15 is shown
         });
 
         // Start Quiz
@@ -1547,6 +1534,32 @@
             document.querySelector(`[data-step="${step}"]`).classList.add('active');
             updateProgressBar();
             window.scrollTo(0, 0);
+
+            // Start form button countdown when reaching step 15
+            if (step === 15) {
+                startFormButtonCountdown();
+            }
+        }
+
+        // Form button countdown
+        function startFormButtonCountdown() {
+            const formBtn = document.getElementById('formBtn');
+            if (formBtn) {
+                formBtn.disabled = true;
+                let countdown = 5;
+                formBtn.innerHTML = `Continuar (${countdown}s) <span class="material-icons">arrow_forward</span>`;
+
+                const interval = setInterval(() => {
+                    countdown--;
+                    if (countdown > 0) {
+                        formBtn.innerHTML = `Continuar (${countdown}s) <span class="material-icons">arrow_forward</span>`;
+                    } else {
+                        clearInterval(interval);
+                        formBtn.disabled = false;
+                        formBtn.innerHTML = 'Continuar <span class="material-icons">arrow_forward</span>';
+                    }
+                }, 1000);
+            }
         }
 
         function updateProgressBar() {
