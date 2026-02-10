@@ -1498,13 +1498,13 @@
                         data-trigger-value=""
                         data-activation-type="alwaysActivated"
                         data-activation-value=""
-                        data-deactivation-type="neverDeactivate"
+                        data-deactivation-type="leadCollected"
                         data-deactivation-value=""
-                        data-form-name="MEDGM0226ISC - Formulário de captura de leads"
+                        data-form-name="MEDGM0226ISC - Formulário de captura de leads "
                         data-height="1015"
                         data-layout-iframe-id="inline-pdDLJ9xMhKhlWCS9hJVV"
                         data-form-id="pdDLJ9xMhKhlWCS9hJVV"
-                        title="MEDGM0226ISC - Formulário de captura de leads">
+                        title="MEDGM0226ISC - Formulário de captura de leads ">
                     </iframe>
                     <script src="https://admin.b2company.co/js/form_embed.js"></script>
                 </div>
@@ -1900,11 +1900,70 @@
         const quizData = {
             currentStep: 0,
             totalSteps: 20,
-            answers: {}
+            answers: {},
+            utmParams: {}
         };
+
+        // Capture UTM Parameters from URL
+        function captureUTMParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Map Facebook/standard UTM parameters
+            quizData.utmParams = {
+                site_source_name: urlParams.get('utm_source') || urlParams.get('source') || '',
+                campaign_name: urlParams.get('utm_campaign') || urlParams.get('campaign') || '',
+                adset_name: urlParams.get('utm_content') || urlParams.get('adset') || '',
+                ad_name: urlParams.get('utm_term') || urlParams.get('ad') || '',
+                placement: urlParams.get('placement') || urlParams.get('utm_placement') || ''
+            };
+
+            // Store in localStorage for persistence
+            localStorage.setItem('quiz_utm_params', JSON.stringify(quizData.utmParams));
+
+            console.log('UTM Parameters captured:', quizData.utmParams);
+        }
+
+        // Load UTM Parameters from localStorage if available
+        function loadUTMParameters() {
+            const stored = localStorage.getItem('quiz_utm_params');
+            if (stored) {
+                quizData.utmParams = JSON.parse(stored);
+            }
+        }
+
+        // Inject UTM Parameters into form iframe
+        function injectUTMsIntoForm() {
+            const iframe = document.getElementById('inline-pdDLJ9xMhKhlWCS9hJVV');
+            if (!iframe) return;
+
+            // Build URL with UTM parameters
+            const baseUrl = 'https://admin.b2company.co/widget/form/pdDLJ9xMhKhlWCS9hJVV';
+            const params = new URLSearchParams();
+
+            // Add UTM parameters to iframe URL
+            if (quizData.utmParams.site_source_name) params.append('site_source_name', quizData.utmParams.site_source_name);
+            if (quizData.utmParams.campaign_name) params.append('campaign_name', quizData.utmParams.campaign_name);
+            if (quizData.utmParams.adset_name) params.append('adset_name', quizData.utmParams.adset_name);
+            if (quizData.utmParams.ad_name) params.append('ad_name', quizData.utmParams.ad_name);
+            if (quizData.utmParams.placement) params.append('placement', quizData.utmParams.placement);
+
+            // Add all quiz answers as well
+            Object.keys(quizData.answers).forEach(key => {
+                params.append(key, quizData.answers[key]);
+            });
+
+            const urlWithParams = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+            iframe.src = urlWithParams;
+
+            console.log('Form URL with UTMs:', urlWithParams);
+        }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Capture UTM parameters on page load
+            captureUTMParameters();
+            loadUTMParameters();
+
             updateProgressBar();
 
             // Meta input handler with R$ formatting
@@ -1965,6 +2024,10 @@
             // Start form button countdown when reaching step 15
             if (step === 15) {
                 startFormButtonCountdown();
+                // Inject UTM parameters into form iframe
+                setTimeout(() => {
+                    injectUTMsIntoForm();
+                }, 500);
             }
         }
 
