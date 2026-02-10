@@ -35,8 +35,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #FAFAFA;
-            color: #1A1A1A;
+            background: #0A0A0A;
+            color: #FFFFFF;
             overflow-x: hidden;
         }
 
@@ -64,6 +64,20 @@
             width: 0%;
         }
 
+        /* Logo */
+        .logo-header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            width: 120px;
+        }
+
+        .logo-header img {
+            width: 100%;
+            height: auto;
+        }
+
         /* Step Container */
         .step {
             display: none;
@@ -73,6 +87,7 @@
             margin: 0 auto;
             width: 100%;
             animation: fadeIn 0.4s ease;
+            background: #0A0A0A;
         }
 
         .step.active {
@@ -89,23 +104,24 @@
         .back-btn {
             width: 44px;
             height: 44px;
-            border: none;
-            background: #F5F5F5;
+            border: 1px solid rgba(202, 170, 130, 0.3);
+            background: rgba(202, 170, 130, 0.1);
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            transition: background 0.2s;
+            transition: all 0.2s;
         }
 
         .back-btn:hover {
-            background: #ECECEC;
+            background: rgba(202, 170, 130, 0.2);
+            border-color: #CAAA82;
         }
 
         .back-btn .material-icons {
-            color: #1A1A1A;
+            color: #CAAA82;
         }
 
         /* Typography - Mobile First */
@@ -113,7 +129,7 @@
             font-size: 11px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #8B7355;
+            color: #CAAA82;
             margin-bottom: 12px;
             font-weight: 500;
         }
@@ -122,13 +138,13 @@
             font-size: 22px;
             font-weight: 700;
             line-height: 1.3;
-            color: #1A1A1A;
+            color: #FFFFFF;
             margin-bottom: 12px;
         }
 
         .subtitle {
             font-size: 14px;
-            color: #666;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 24px;
             line-height: 1.5;
         }
@@ -210,13 +226,12 @@
             text-align: left;
             font-size: 15px;
             font-weight: 500;
-            color: #1A1A1A;
-            background: white;
-            border: 2px solid transparent;
+            color: #FFFFFF;
+            background: rgba(202, 170, 130, 0.08);
+            border: 1px solid rgba(202, 170, 130, 0.2);
             border-radius: 14px;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             font-family: 'Inter', sans-serif;
             min-height: 56px;
             display: flex;
@@ -225,9 +240,10 @@
         }
 
         .option-btn:hover {
+            background: rgba(202, 170, 130, 0.15);
             border-color: #CAAA82;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 0 20px rgba(202, 170, 130, 0.2);
         }
 
         /* Input */
@@ -239,17 +255,22 @@
             width: 100%;
             padding: 18px 20px;
             font-size: 20px;
-            border: 2px solid #CAAA82;
+            border: 1px solid rgba(202, 170, 130, 0.3);
             border-radius: 14px;
-            background: white;
-            color: #1A1A1A;
+            background: rgba(202, 170, 130, 0.05);
+            color: #FFFFFF;
             font-family: 'Inter', sans-serif;
             min-height: 56px;
         }
 
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
         .input-field:focus {
             outline: none;
-            border-color: #8B7355;
+            border-color: #CAAA82;
+            background: rgba(202, 170, 130, 0.1);
             box-shadow: 0 0 0 4px rgba(202, 170, 130, 0.1);
         }
 
@@ -259,8 +280,8 @@
             padding: 16px 28px;
             font-size: 15px;
             font-weight: 600;
-            color: white;
-            background: #1A1A1A;
+            color: #1A1A1A;
+            background: #CAAA82;
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -275,14 +296,14 @@
         }
 
         .continue-btn:hover:not(:disabled) {
-            background: #2A2A2A;
+            background: #FFEBC3;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 20px rgba(202, 170, 130, 0.4);
         }
 
         .continue-btn:disabled {
-            background: #E0E0E0;
-            color: #999;
+            background: rgba(202, 170, 130, 0.3);
+            color: rgba(26, 26, 26, 0.5);
             cursor: not-allowed;
         }
 
@@ -534,13 +555,14 @@
 
         /* Landing Page Sections */
         .landing-hero {
-            background: #F5F5F5;
+            background: #0A0A0A;
             padding: 32px 0;
             text-align: center;
         }
 
         .landing-section {
             padding: 48px 20px;
+            background: #0A0A0A;
         }
 
         .landing-section-dark {
@@ -550,7 +572,7 @@
         }
 
         .landing-section-light {
-            background: #F8F9FA;
+            background: #0F0F0F;
             padding: 48px 20px;
         }
 
@@ -565,13 +587,17 @@
         .section-subtitle {
             font-size: 15px;
             text-align: center;
-            color: #666;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 32px;
             line-height: 1.5;
         }
 
         .section-subtitle-dark {
             color: rgba(255, 255, 255, 0.8);
+        }
+
+        .section-title {
+            color: #FFFFFF;
         }
 
         /* Pain Points Grid */
@@ -583,23 +609,28 @@
         }
 
         .pain-card {
-            background: white;
+            background: rgba(202, 170, 130, 0.05);
             padding: 24px 20px;
             border-radius: 16px;
-            border: 1px solid #E0E0E0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(202, 170, 130, 0.2);
+            transition: all 0.2s;
+        }
+
+        .pain-card:hover {
+            background: rgba(202, 170, 130, 0.1);
+            border-color: #CAAA82;
         }
 
         .pain-card h3 {
             font-size: 16px;
             font-weight: 700;
-            color: #1A1A1A;
+            color: #CAAA82;
             margin-bottom: 8px;
         }
 
         .pain-card p {
             font-size: 14px;
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.5;
         }
 
@@ -612,11 +643,17 @@
         }
 
         .method-card {
-            background: white;
+            background: rgba(202, 170, 130, 0.05);
             padding: 24px 20px;
             border-radius: 16px;
             border-left: 4px solid #CAAA82;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(202, 170, 130, 0.2);
+            transition: all 0.2s;
+        }
+
+        .method-card:hover {
+            background: rgba(202, 170, 130, 0.1);
+            border-color: #CAAA82;
         }
 
         .method-number {
@@ -636,13 +673,13 @@
         .method-card h3 {
             font-size: 16px;
             font-weight: 700;
-            color: #1A1A1A;
+            color: #FFFFFF;
             margin-bottom: 8px;
         }
 
         .method-card p {
             font-size: 14px;
-            color: #666;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.5;
             margin-bottom: 6px;
         }
@@ -1012,6 +1049,11 @@
     </style>
 </head>
 <body>
+    <!-- Logo Fixed -->
+    <div class="logo-header">
+        <img src="assets/logo-dourada.png" alt="MedGM">
+    </div>
+
     <div class="quiz-container">
         <!-- Progress Bar -->
         <div class="progress-bar-container">
