@@ -646,57 +646,136 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
-        /* Landing Page Sections - Redesign Moderno */
+        /* Landing Page Sections - Redesign Moderno Estilo AirLume */
         .landing-hero {
-            background: linear-gradient(180deg, rgba(202, 170, 130, 0.08) 0%, transparent 100%);
-            padding: 100px 40px 80px;
+            background: linear-gradient(180deg, #1A1A1A 0%, #2A2A2A 50%, #1A1A1A 100%);
+            padding: 120px 40px 100px;
             text-align: center;
             margin: 0 -20px;
-            border-bottom: 1px solid rgba(202, 170, 130, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="100" x="49" fill="rgba(202,170,130,0.1)"/><rect width="100" height="2" y="49" fill="rgba(202,170,130,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .floating-cards-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 60px auto 0;
+            height: 400px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(202, 170, 130, 0.2);
+        }
+
+        .floating-card-1 {
+            top: 20px;
+            left: 5%;
+            width: 220px;
+            transform: rotate(-5deg);
+        }
+
+        .floating-card-2 {
+            top: 60px;
+            right: 8%;
+            width: 260px;
+            transform: rotate(3deg);
+        }
+
+        .floating-card-3 {
+            bottom: 40px;
+            left: 15%;
+            width: 200px;
+            transform: rotate(2deg);
+        }
+
+        @media (max-width: 768px) {
+            .floating-cards-container {
+                display: none;
+            }
         }
 
         .landing-section {
             padding: 100px 40px;
             margin: 0 -20px;
-            background: transparent;
-            border-bottom: 1px solid rgba(202, 170, 130, 0.08);
+            background: #FFFFFF;
         }
 
         .landing-section-dark {
-            background: linear-gradient(180deg, rgba(202, 170, 130, 0.04) 0%, rgba(202, 170, 130, 0.02) 100%);
+            background: #1A1A1A;
             padding: 100px 40px;
             margin: 0 -20px;
-            border-top: 1px solid rgba(202, 170, 130, 0.12);
-            border-bottom: 1px solid rgba(202, 170, 130, 0.12);
         }
 
         .landing-section-light {
-            background: rgba(15, 15, 15, 0.4);
+            background: #FAFAFA;
             padding: 100px 40px;
             margin: 0 -20px;
-            border-top: 1px solid rgba(202, 170, 130, 0.08);
-            border-bottom: 1px solid rgba(202, 170, 130, 0.08);
+        }
+
+        .landing-section-gold {
+            background: linear-gradient(135deg, #FFEBC3 0%, #F5E5D3 100%);
+            padding: 100px 40px;
+            margin: 0 -20px;
         }
 
         .section-title {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 800;
             text-align: center;
             margin-bottom: 16px;
-            line-height: 1.2;
+            line-height: 1.1;
+            color: #1A1A1A;
+            letter-spacing: -1px;
+        }
+
+        .landing-section-dark .section-title {
             color: #FFFFFF;
-            letter-spacing: -0.5px;
         }
 
         .section-subtitle {
             font-size: 18px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.8);
+            color: #666666;
             margin-bottom: 60px;
             line-height: 1.6;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .landing-section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(202, 170, 130, 0.15);
+            color: #CAAA82;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
             opacity: 0.95;
             max-width: 700px;
             margin-left: auto;
@@ -718,37 +797,35 @@
         }
 
         .pain-card {
-            background: rgba(26, 26, 26, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 40px 32px;
+            background: #FFFFFF;
+            padding: 36px 32px;
             border-radius: 16px;
-            border-left: 3px solid #CAAA82;
-            border-right: 1px solid rgba(202, 170, 130, 0.1);
-            border-top: 1px solid rgba(202, 170, 130, 0.1);
-            border-bottom: 1px solid rgba(202, 170, 130, 0.1);
+            border-left: 4px solid #CAAA82;
+            border-right: 1px solid #E5E5E5;
+            border-top: 1px solid #E5E5E5;
+            border-bottom: 1px solid #E5E5E5;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         .pain-card:hover {
-            background: rgba(26, 26, 26, 0.5);
-            border-left-color: #FFEBC3;
-            border-left-width: 4px;
+            border-left-width: 6px;
             transform: translateX(4px);
-            box-shadow: -8px 0 24px rgba(202, 170, 130, 0.15);
+            box-shadow: 0 8px 32px rgba(202, 170, 130, 0.2);
         }
 
         .pain-card h3 {
             font-size: 20px;
             font-weight: 700;
-            color: #CAAA82;
+            color: #1A1A1A;
             margin-bottom: 16px;
             letter-spacing: -0.3px;
         }
 
         .pain-card p {
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
+            color: #666666;
             line-height: 1.7;
         }
 
@@ -769,63 +846,47 @@
         }
 
         .method-card {
-            background: rgba(26, 26, 26, 0.2);
-            backdrop-filter: blur(8px);
+            background: #FFFFFF;
             padding: 40px 36px;
-            border-radius: 16px;
-            border: 1px solid rgba(202, 170, 130, 0.15);
+            border-radius: 20px;
+            border: 1px solid #E5E5E5;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
-        }
-
-        .method-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #CAAA82 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .method-card:hover {
-            background: rgba(26, 26, 26, 0.4);
-            border-color: rgba(202, 170, 130, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .method-card:hover::before {
-            opacity: 1;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(202, 170, 130, 0.2);
+            border-color: #CAAA82;
         }
 
         .method-number {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 56px;
+            height: 56px;
             background: linear-gradient(135deg, #CAAA82 0%, #B89968 100%);
-            color: #1A1A1A;
-            border-radius: 12px;
+            color: #FFFFFF;
+            border-radius: 16px;
             font-weight: 800;
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 16px rgba(202, 170, 130, 0.3);
         }
 
         .method-card h3 {
             font-size: 22px;
             font-weight: 700;
-            color: #FFFFFF;
+            color: #1A1A1A;
             margin-bottom: 16px;
             letter-spacing: -0.3px;
         }
 
         .method-card p {
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.85);
+            color: #666666;
             line-height: 1.7;
             margin-bottom: 12px;
         }
@@ -833,6 +894,7 @@
         .method-result {
             font-size: 15px;
             color: #CAAA82;
+            font-weight: 600;
             font-weight: 600;
             font-style: italic;
         }
@@ -860,39 +922,52 @@
         }
 
         .benefit-card-dark {
-            background: rgba(26, 26, 26, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 24px 20px;
-            border-radius: 16px;
-            border: 2px solid rgba(202, 170, 130, 0.25);
-            transition: all 0.3s ease;
+            background: #FFFFFF;
+            padding: 32px 28px;
+            border-radius: 20px;
+            border: 1px solid #E5E5E5;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .benefit-card-dark:hover {
-            background: rgba(26, 26, 26, 0.8);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(202, 170, 130, 0.2);
             border-color: #CAAA82;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(202, 170, 130, 0.3);
         }
 
         .benefit-card-dark .material-icons {
-            font-size: 40px;
+            font-size: 48px;
             color: #CAAA82;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
+            display: block;
         }
 
         .benefit-card-dark h3 {
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 8px;
+            color: #1A1A1A;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
         }
 
         .benefit-card-dark p {
-            font-size: 14px;
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .benefit-card-dark.featured {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+            border-color: #CAAA82;
+        }
+
+        .benefit-card-dark.featured h3 {
             color: #FFFFFF;
-            line-height: 1.5;
-            opacity: 0.95;
+        }
+
+        .benefit-card-dark.featured p {
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* CTA Final Dark */
@@ -1024,24 +1099,30 @@
         }
 
         .faq-item {
-            background: rgba(26, 26, 26, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 24px;
-            border-radius: 12px;
-            margin-bottom: 12px;
+            background: #FFFFFF;
+            padding: 28px 32px;
+            border-radius: 16px;
+            margin-bottom: 16px;
             cursor: pointer;
-            border: 2px solid rgba(202, 170, 130, 0.25);
+            border: 1px solid #E5E5E5;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
         }
 
         .faq-item:hover {
-            background: rgba(26, 26, 26, 0.8);
             border-color: #CAAA82;
+            box-shadow: 0 4px 20px rgba(202, 170, 130, 0.15);
+        }
+
+        .faq-item.active {
+            border-color: #CAAA82;
+            background: #FAFAFA;
         }
 
         .faq-question {
             font-weight: 600;
-            color: #FFFFFF;
+            color: #1A1A1A;
+            font-size: 17px;
             font-size: 16px;
             display: flex;
             justify-content: space-between;
@@ -1052,10 +1133,9 @@
         .faq-answer {
             display: none;
             margin-top: 16px;
-            color: #FFFFFF;
-            line-height: 1.6;
+            color: #666666;
+            line-height: 1.7;
             font-size: 15px;
-            opacity: 0.95;
         }
 
         .faq-item.active .faq-answer {
