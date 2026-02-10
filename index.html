@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedGM - Diagnóstico de Faturamento</title>
-    <link rel="stylesheet" href="style.css">
 
     <!-- Meta Pixel Code -->
     <script>
@@ -23,45 +22,1474 @@
     src="https://www.facebook.com/tr?id=1376176936827293&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAFAFA;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        .quiz-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Progress Bar */
+        .progress-bar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #E0E0E0;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #CAAA82;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Step Container */
+        .step {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 20px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .step.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Back Button */
+        .back-btn {
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: #F5F5F5;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #ECECEC;
+        }
+
+        .back-btn .material-icons {
+            color: #1A1A1A;
+        }
+
+        /* Typography */
+        .label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #8B7355;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #1A1A1A;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        /* Landing Page */
+        .landing {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            color: #CAAA82;
+            margin-bottom: 8px;
+            letter-spacing: 4px;
+        }
+
+        .logo-subtitle {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #8B7355;
+            margin-bottom: 60px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 24px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 16px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+
+        .bar {
+            width: 48px;
+            background: #E8E8E8;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.6s ease;
+        }
+
+        .bar:nth-child(1) { height: 30%; animation: growBar 1s ease 0.2s forwards; }
+        .bar:nth-child(2) { height: 45%; animation: growBar 1s ease 0.4s forwards; }
+        .bar:nth-child(3) { height: 60%; animation: growBar 1s ease 0.6s forwards; }
+        .bar:nth-child(4) { height: 100%; background: #1A1A1A; animation: growBar 1s ease 0.8s forwards; }
+
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
+        .chart-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            font-weight: 500;
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 40px 0;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 20px 24px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 500;
+            color: #1A1A1A;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .option-btn:hover {
+            border-color: #CAAA82;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Input */
+        .input-group {
+            margin: 40px 0;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 20px 24px;
+            font-size: 24px;
+            border: 2px solid #CAAA82;
+            border-radius: 16px;
+            background: white;
+            color: #1A1A1A;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #8B7355;
+            box-shadow: 0 0 0 4px rgba(202, 170, 130, 0.1);
+        }
+
+        /* Buttons */
+        .continue-btn {
+            width: 100%;
+            padding: 18px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background: #1A1A1A;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .continue-btn:hover:not(:disabled) {
+            background: #2A2A2A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .continue-btn:disabled {
+            background: #E0E0E0;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        /* Insight Box */
+        .insight-box {
+            background: white;
+            border-radius: 24px;
+            padding: 32px 28px;
+            margin: 24px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .insight-icon {
+            width: 64px;
+            height: 64px;
+            background: #1A1A1A;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .insight-icon .material-icons {
+            color: white;
+            font-size: 32px;
+        }
+
+        .insight-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #F0E8DE;
+            color: #6B5A47;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .insight-text {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #1A1A1A;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Loading */
+        .loading-container {
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-icon {
+            width: 80px;
+            height: 80px;
+            background: #1A1A1A;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .loading-icon .material-icons {
+            color: #CAAA82;
+            font-size: 40px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 8px;
+            background: #E0E0E0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 32px 0;
+        }
+
+        .loading-fill {
+            height: 100%;
+            background: #CAAA82;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .loading-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 16px;
+        }
+
+        /* Result */
+        .result-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #F0E8DE;
+            color: #6B5A47;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .profile-circle {
+            width: 80px;
+            height: 80px;
+            background: #00C853;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .profile-circle .material-icons {
+            color: white;
+            font-size: 40px;
+        }
+
+        .result-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .result-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            text-align: center;
+        }
+
+        .result-card .material-icons {
+            font-size: 32px;
+            color: #CAAA82;
+            margin-bottom: 12px;
+        }
+
+        .result-card-title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-card-status {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1A1A1A;
+        }
+
+        .status-boa { color: #00C853; }
+        .status-regular { color: #FFA726; }
+        .status-irregular { color: #FF7043; }
+        .status-critica { color: #F44336; }
+
+        .gargalo-box {
+            background: #FFF3E0;
+            border-left: 4px solid #FF6F00;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+
+        .gargalo-box strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #E65100;
+        }
+
+        /* Gift Card */
+        .gift-card {
+            background: linear-gradient(135deg, #CAAA82 0%, #8B7355 100%);
+            color: white;
+            padding: 40px 32px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 8px 24px rgba(202, 170, 130, 0.3);
+        }
+
+        .gift-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .gift-icon .material-icons {
+            color: #CAAA82;
+            font-size: 40px;
+        }
+
+        .gift-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: white;
+            padding: 40px 24px;
+            border-radius: 24px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .booking-frame {
+            width: 100%;
+            border: none;
+            min-height: 600px;
+            border-radius: 12px;
+        }
+
+        /* Sales Section */
+        .sales-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .symptom-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .symptom-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1A1A1A;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .benefit-card .material-icons {
+            font-size: 48px;
+            color: #CAAA82;
+            margin-bottom: 16px;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .result-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 32px;
+        }
+
+        .mb-4 {
+            margin-bottom: 32px;
+        }
+
+        .seal {
+            font-size: 11px;
+            color: #999;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 24px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container landing">
-        <div class="logo">MEDGM</div>
-        <div class="logo-subtitle">Medical Growth & Management</div>
-
-        <h1>Descubra quanto seu consultório está deixando na mesa</h1>
-        <p class="subtitle">Diagnóstico estratégico para médicos e profissionais da saúde.</p>
-
-        <div class="chart-container">
-            <div class="chart-bars">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="chart-label">Seu potencial de crescimento</div>
+    <div class="quiz-container">
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
 
-        <p class="validation-text">Analise os principais pontos de marketing e vendas do seu consultório em menos de 3 minutos.</p>
+        <!-- STEP 0: Landing Page -->
+        <div class="step active landing" data-step="0">
+            <div class="logo">MEDGM</div>
+            <div class="logo-subtitle">Medical Growth & Management</div>
 
-        <button class="continue-button" onclick="startQuiz()">
-            Iniciar Diagnóstico Grátis
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-        </button>
+            <h1>Descubra quanto seu consultório está deixando na mesa</h1>
+            <p class="subtitle">Diagnóstico estratégico para médicos e profissionais da saúde.</p>
 
-        <p style="margin-top: 24px; font-size: 11px; color: #999; letter-spacing: 1px; text-transform: uppercase;">
-            Validado em consultórios de todo o Brasil
-        </p>
+            <div class="chart-container">
+                <div class="chart-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="chart-label">Seu Potencial de Crescimento</div>
+            </div>
+
+            <p class="subtitle">Análise os principais pontos de marketing e vendas do seu consultório em menos de 3 minutos.</p>
+
+            <button class="continue-btn" onclick="startQuiz()">
+                Iniciar Diagnóstico Grátis
+                <span class="material-icons">arrow_forward</span>
+            </button>
+
+            <p class="seal">Validado em consultórios de todo o Brasil</p>
+        </div>
+
+        <!-- STEP 1: Especialidade -->
+        <div class="step" data-step="1">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Qual sua especialidade médica?</h1>
+            <p class="subtitle">Isso nos ajuda a segmentar sua análise de mercado.</p>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('especialidade', 'Dermatologia')">Dermatologia</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Ginecologia/Obstetrícia')">Ginecologia/Obstetrícia</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Ortopedia')">Ortopedia</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Cardiologia')">Cardiologia</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Endocrinologia')">Endocrinologia</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Cirurgia Plástica')">Cirurgia Plástica</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Pediatria')">Pediatria</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Psiquiatria')">Psiquiatria</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Nutrologia')">Nutrologia</button>
+                <button class="option-btn" onclick="selectOption('especialidade', 'Outra especialidade')">Outra especialidade</button>
+            </div>
+        </div>
+
+        <!-- STEP 2: Faturamento Atual -->
+        <div class="step" data-step="2">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Qual o faturamento mensal atual do seu consultório?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('faturamentoAtual', 'Menos de R$ 30.000', 10)">Menos de R$ 30.000</button>
+                <button class="option-btn" onclick="selectOption('faturamentoAtual', 'R$ 30.000 a R$ 50.000', 30)">R$ 30.000 a R$ 50.000</button>
+                <button class="option-btn" onclick="selectOption('faturamentoAtual', 'R$ 50.000 a R$ 100.000', 50)">R$ 50.000 a R$ 100.000</button>
+                <button class="option-btn" onclick="selectOption('faturamentoAtual', 'R$ 100.000 a R$ 200.000', 75)">R$ 100.000 a R$ 200.000</button>
+                <button class="option-btn" onclick="selectOption('faturamentoAtual', 'Acima de R$ 200.000', 100)">Acima de R$ 200.000</button>
+            </div>
+        </div>
+
+        <!-- STEP 3: Percentual Convênio + Insight -->
+        <div class="step" data-step="3">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Qual o percentual do seu faturamento que vem de convênio?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('convenio', '100% convênio', 0)">100% convênio</button>
+                <button class="option-btn" onclick="selectOption('convenio', '70% a 90% convênio', 20)">70% a 90% convênio</button>
+                <button class="option-btn" onclick="selectOption('convenio', '50% a 70% convênio', 40)">50% a 70% convênio</button>
+                <button class="option-btn" onclick="selectOption('convenio', '30% a 50% convênio', 60)">30% a 50% convênio</button>
+                <button class="option-btn" onclick="selectOption('convenio', 'Menos de 30% convênio', 80)">Menos de 30% convênio</button>
+                <button class="option-btn" onclick="selectOption('convenio', '100% particular', 100)">100% particular</button>
+            </div>
+
+            <div class="insight-box text-center">
+                <div class="insight-icon">
+                    <span class="material-icons">warning</span>
+                </div>
+                <div class="insight-badge">Insight B2</div>
+                <p class="insight-text">"Médicos que dependem mais de 50% de convênio faturam em média 3x menos que médicos majoritariamente particulares, mesmo trabalhando as mesmas horas."</p>
+            </div>
+
+            <button class="continue-btn" onclick="nextStep()">
+                Continuar
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+
+        <!-- STEP 4: Leads por Mês -->
+        <div class="step" data-step="4">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Quantos leads (contatos de potenciais pacientes) você recebe por mês?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('leads', 'Menos de 20', 10)">Menos de 20</button>
+                <button class="option-btn" onclick="selectOption('leads', '20 a 50', 30)">20 a 50</button>
+                <button class="option-btn" onclick="selectOption('leads', '50 a 100', 60)">50 a 100</button>
+                <button class="option-btn" onclick="selectOption('leads', '100 a 200', 80)">100 a 200</button>
+                <button class="option-btn" onclick="selectOption('leads', 'Mais de 200', 100)">Mais de 200</button>
+                <button class="option-btn" onclick="selectOption('leads', 'Não sei / Não controlo', 0)">Não sei / Não controlo</button>
+            </div>
+        </div>
+
+        <!-- STEP 5: Taxa de Conversão + Insight -->
+        <div class="step" data-step="5">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>De cada 10 pessoas que entram em contato, quantas efetivamente agendam consulta?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('conversao', '1 a 2 (10-20%)', 10)">1 a 2 (10-20%)</button>
+                <button class="option-btn" onclick="selectOption('conversao', '3 a 4 (30-40%)', 30)">3 a 4 (30-40%)</button>
+                <button class="option-btn" onclick="selectOption('conversao', '5 a 6 (50-60%)', 60)">5 a 6 (50-60%)</button>
+                <button class="option-btn" onclick="selectOption('conversao', '7 a 8 (70-80%)', 80)">7 a 8 (70-80%)</button>
+                <button class="option-btn" onclick="selectOption('conversao', '9 a 10 (90%+)', 100)">9 a 10 (90%+)</button>
+                <button class="option-btn" onclick="selectOption('conversao', 'Não tenho esse controle', 0)">Não tenho esse controle</button>
+            </div>
+
+            <div class="insight-box text-center">
+                <div class="insight-icon">
+                    <span class="material-icons">error</span>
+                </div>
+                <div class="insight-badge">Realidade Comercial</div>
+                <p class="insight-text">"67% dos leads que entram em contato com consultórios médicos NÃO conseguem agendar. O problema não é falta de pacientes, é perda de oportunidades no processo."</p>
+            </div>
+
+            <button class="continue-btn" onclick="nextStep()">
+                Continuar
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+
+        <!-- STEP 6: Roteiro Secretária -->
+        <div class="step" data-step="6">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Sua secretária/recepcionista segue um roteiro estruturado para atender os leads?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('roteiro', 'Sim, temos script bem definido e treinamento', 100)">Sim, temos script bem definido e treinamento</button>
+                <button class="option-btn" onclick="selectOption('roteiro', 'Temos orientações básicas, mas nada formal', 60)">Temos orientações básicas, mas nada formal</button>
+                <button class="option-btn" onclick="selectOption('roteiro', 'Ela atende do jeito dela', 30)">Ela atende do jeito dela</button>
+                <button class="option-btn" onclick="selectOption('roteiro', 'Não tenho secretária fixa', 20)">Não tenho secretária fixa</button>
+                <button class="option-btn" onclick="selectOption('roteiro', 'Eu mesmo atendo os contatos', 10)">Eu mesmo atendo os contatos</button>
+            </div>
+        </div>
+
+        <!-- STEP 7: Retorno de Pacientes + Insight -->
+        <div class="step" data-step="7">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Com que frequência seus pacientes retornam para novas consultas ou procedimentos?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('retorno', 'Maioria retorna regularmente (3+ vezes/ano)', 100)">Maioria retorna regularmente (3+ vezes/ano)</button>
+                <button class="option-btn" onclick="selectOption('retorno', 'Alguns retornam (1-2 vezes/ano)', 60)">Alguns retornam (1-2 vezes/ano)</button>
+                <button class="option-btn" onclick="selectOption('retorno', 'Poucos retornam, maioria vem só 1 vez', 30)">Poucos retornam, maioria vem só 1 vez</button>
+                <button class="option-btn" onclick="selectOption('retorno', 'Não tenho esse controle', 0)">Não tenho esse controle</button>
+            </div>
+
+            <div class="insight-box text-center">
+                <div class="insight-icon">
+                    <span class="material-icons">sync</span>
+                </div>
+                <div class="insight-badge">Maximização de Valor</div>
+                <p class="insight-text">"O maior desperdício de um consultório não é perder pacientes novos. É não maximizar o valor dos que já tem. Aumentar a taxa de retorno pode triplicar seu faturamento."</p>
+            </div>
+
+            <button class="continue-btn" onclick="nextStep()">
+                Continuar
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+
+        <!-- STEP 8: Controle de Métricas -->
+        <div class="step" data-step="8">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Você controla as métricas comerciais do seu consultório?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('metricas', 'Sim, acompanho tudo (leads, agendamentos, conversão, ticket, retorno)', 100)">Sim, acompanho tudo (leads, agendamentos, conversão, ticket, retorno)</button>
+                <button class="option-btn" onclick="selectOption('metricas', 'Controlo algumas coisas básicas', 60)">Controlo algumas coisas básicas</button>
+                <button class="option-btn" onclick="selectOption('metricas', 'Só olho o faturamento no final do mês', 30)">Só olho o faturamento no final do mês</button>
+                <button class="option-btn" onclick="selectOption('metricas', 'Não controlo nada / Delego para contador', 0)">Não controlo nada / Delego para contador</button>
+            </div>
+        </div>
+
+        <!-- STEP 9: Maior Desafio -->
+        <div class="step" data-step="9">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Qual seu maior desafio hoje no consultório?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('desafio', 'Atrair mais pacientes particulares')">Atrair mais pacientes particulares</button>
+                <button class="option-btn" onclick="selectOption('desafio', 'Diminuir dependência de convênio')">Diminuir dependência de convênio</button>
+                <button class="option-btn" onclick="selectOption('desafio', 'Aumentar o ticket médio')">Aumentar o ticket médio</button>
+                <button class="option-btn" onclick="selectOption('desafio', 'Fazer pacientes retornarem mais')">Fazer pacientes retornarem mais</button>
+                <button class="option-btn" onclick="selectOption('desafio', 'Ter previsibilidade no faturamento')">Ter previsibilidade no faturamento</button>
+                <button class="option-btn" onclick="selectOption('desafio', 'Treinar minha equipe comercial')">Treinar minha equipe comercial</button>
+                <button class="option-btn" onclick="selectOption('desafio', 'Não sei por onde começar')">Não sei por onde começar</button>
+            </div>
+        </div>
+
+        <!-- STEP 10: Meta de Faturamento -->
+        <div class="step" data-step="10">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <h1>Qual sua meta de faturamento mensal para os próximos 12 meses?</h1>
+
+            <div class="input-group">
+                <input type="text" class="input-field" id="metaFaturamento" placeholder="Ex: 100000" inputmode="numeric">
+            </div>
+
+            <button class="continue-btn" id="metaBtn" disabled onclick="saveMetaAndNext()">
+                Continuar
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+
+        <!-- STEP 11: Disponibilidade -->
+        <div class="step" data-step="11">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <div class="label">Diagnóstico de Faturamento</div>
+            <h1>Qual sua disponibilidade para implementar mudanças no seu consultório?</h1>
+
+            <div class="options">
+                <button class="option-btn" onclick="selectOption('disponibilidade', 'Imediatamente, é prioridade máxima')">Imediatamente, é prioridade máxima</button>
+                <button class="option-btn" onclick="selectOption('disponibilidade', 'Nos próximos 30 dias')">Nos próximos 30 dias</button>
+                <button class="option-btn" onclick="selectOption('disponibilidade', 'Nos próximos 3 meses')">Nos próximos 3 meses</button>
+                <button class="option-btn" onclick="selectOption('disponibilidade', 'Ainda estou só pesquisando')">Ainda estou só pesquisando</button>
+                <button class="option-btn" onclick="selectOption('disponibilidade', 'Não tenho certeza se preciso disso')">Não tenho certeza se preciso disso</button>
+            </div>
+        </div>
+
+        <!-- STEP 12: Formulário de Captura -->
+        <div class="step" data-step="12">
+            <button class="back-btn" onclick="previousStep()">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <h1>Onde enviamos seu diagnóstico?</h1>
+            <p class="subtitle" style="background: #F0E8DE; padding: 12px 20px; border-radius: 12px; color: #6B5A47; font-weight: 500;">
+                Preencha abaixo e clique em "CONTINUAR"
+            </p>
+
+            <div style="margin: 24px 0; min-height: 600px;">
+                <iframe
+                    src="https://admin.b2company.co/widget/form/pdDLJ9xMhKhlWCS9hJVV"
+                    style="width:100%;height:600px;border:none;border-radius:12px"
+                    id="inline-pdDLJ9xMhKhlWCS9hJVV"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="MEDGM0226ISC - Formulário de captura de leads"
+                    data-height="1015"
+                    data-layout-iframe-id="inline-pdDLJ9xMhKhlWCS9hJVV"
+                    data-form-id="pdDLJ9xMhKhlWCS9hJVV"
+                    title="MEDGM0226ISC - Formulário de captura de leads">
+                </iframe>
+                <script src="https://admin.b2company.co/js/form_embed.js"></script>
+            </div>
+
+            <button class="continue-btn" id="formBtn" disabled onclick="formSubmitted()">
+                Continuar (aguarde 5s)
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+
+        <!-- STEP 13: Loading / Análise -->
+        <div class="step loading-container" data-step="13">
+            <div class="loading-icon">
+                <span class="material-icons">analytics</span>
+            </div>
+
+            <h1>Analisando suas respostas</h1>
+            <p class="subtitle">Metodologia B2 Company</p>
+
+            <div class="loading-bar">
+                <div class="loading-fill" id="loadingFill"></div>
+            </div>
+
+            <p class="loading-text" id="loadingText">Analisando captação e posicionamento...</p>
+
+            <p class="seal">Estratégia validada em operações médicas</p>
+        </div>
+
+        <!-- STEP 14: Resultado -->
+        <div class="step" data-step="14">
+            <div class="result-badge text-center">Medical Diagnostic Report</div>
+
+            <h1 class="text-center">Doutor(a), seu diagnóstico está pronto:</h1>
+
+            <div class="profile-circle">
+                <span class="material-icons">trending_up</span>
+            </div>
+
+            <p class="text-center" style="font-weight: 600; font-size: 18px; margin-bottom: 32px;">
+                Seu Perfil: Consultório em Crescimento
+            </p>
+
+            <div class="result-cards">
+                <div class="result-card">
+                    <span class="material-icons">person_add</span>
+                    <div class="result-card-title">Captação</div>
+                    <div class="result-card-status" id="scoreCaptacao">Boa</div>
+                </div>
+                <div class="result-card">
+                    <span class="material-icons">event_available</span>
+                    <div class="result-card-title">Conversão</div>
+                    <div class="result-card-status" id="scoreConversao">Boa</div>
+                </div>
+                <div class="result-card">
+                    <span class="material-icons">sync</span>
+                    <div class="result-card-title">Retenção</div>
+                    <div class="result-card-status" id="scoreRetencao">Boa</div>
+                </div>
+                <div class="result-card">
+                    <span class="material-icons">analytics</span>
+                    <div class="result-card-title">Gestão</div>
+                    <div class="result-card-status" id="scoreGestao">Irregular</div>
+                </div>
+            </div>
+
+            <div class="gargalo-box">
+                <strong>⚠️ Seu Principal Gargalo:</strong>
+                <p id="gargaloText">Você não tem visibilidade do que está acontecendo no seu consultório. Sem métricas é impossível saber onde está o problema e onde está a oportunidade.</p>
+            </div>
+
+            <p class="subtitle text-center">
+                Preparamos uma sessão de diagnóstico aprofundado para mostrar exatamente como destravar seu potencial.
+            </p>
+
+            <button class="continue-btn" onclick="nextStep()">
+                Quero Crescer com Segurança
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+
+        <!-- STEP 15: Oferta / Presente -->
+        <div class="step" data-step="15">
+            <div class="gift-card">
+                <div class="gift-icon">
+                    <span class="material-icons">card_giftcard</span>
+                </div>
+
+                <div class="gift-badge">Válido por 24h</div>
+
+                <h1 style="color: white; margin-bottom: 16px;">Parabéns! Você ganhou uma reunião de diagnóstico gratuita com um consultor da B2 Company!</h1>
+
+                <p style="font-size: 14px; margin-bottom: 8px; opacity: 0.9;">Benefício Exclusivo B2</p>
+                <p style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">DIAGNÓSTICO VIP</p>
+                <p style="font-size: 15px; opacity: 0.9;">Análise personalizada de processos e faturamento para sua especialidade.</p>
+            </div>
+
+            <button class="continue-btn" onclick="nextStep()">
+                Liberar Meu Diagnóstico
+                <span class="material-icons">arrow_forward</span>
+            </button>
+
+            <p class="text-center seal">Clique acima para prosseguir para o agendamento</p>
+        </div>
+
+        <!-- STEP 16: Agendamento + Sales Page -->
+        <div class="step" data-step="16">
+            <div class="booking-section text-center">
+                <div class="result-badge">Parabéns! Você foi selecionado</div>
+
+                <h1>DIAGNÓSTICO LIBERADO | VAGAS LIMITADAS</h1>
+
+                <p class="subtitle">Exclusivo para consultórios que faturam acima de R$ 30 mil e que querem transformar marketing em ativo estratégico e não custo.</p>
+
+                <p style="font-weight: 600; margin: 24px 0;">Agende agora seu diagnóstico gratuito de 30 minutos:</p>
+
+                <button class="continue-btn mb-4" onclick="showBookingFrame()" id="showBookingBtn">
+                    Agendar Meu Diagnóstico Gratuito
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+
+                <div id="bookingFrameContainer" style="display: none;">
+                    <iframe
+                        src="https://admin.b2company.co/widget/booking/oI07yHfrYTP1X9bNFySH"
+                        class="booking-frame"
+                        scrolling="no"
+                        id="oI07yHfrYTP1X9bNFySH_1770722284623">
+                    </iframe>
+                    <script src="https://admin.b2company.co/js/form_embed.js" type="text/javascript"></script>
+                </div>
+            </div>
+
+            <!-- Sales Section -->
+            <div class="sales-section">
+                <h1 class="text-center mb-4">SE VOCÊ É MÉDICO E PASSA POR DESAFIOS EM TER PREVISIBILIDADE NO SEU CONSULTÓRIO, VEJA SE ISSO ACONTECE COM VOCÊ</h1>
+
+                <p class="text-center subtitle" style="font-size: 18px; font-weight: 600;">Você provavelmente pode estar sofrendo de algum desses sintomas:</p>
+
+                <div class="symptom-card">
+                    <h3>Dependência de Convênio</h3>
+                    <p>Sente que está trabalhando cada vez mais para ganhar cada vez menos. Os convênios pagam mal e você precisa atender um volume absurdo para fechar as contas.</p>
+                </div>
+
+                <div class="symptom-card">
+                    <h3>Leads que Não Viram Pacientes</h3>
+                    <p>Investe em marketing, recebe contatos, mas sua secretária não consegue converter em consultas. Você não sabe quantos leads perde por mês.</p>
+                </div>
+
+                <div class="symptom-card">
+                    <h3>Pacientes que Vêm Uma Vez e Somem</h3>
+                    <p>Atende bem, resolve o problema, mas o paciente nunca mais volta. Você vive correndo atrás de pacientes novos em vez de cultivar os que já tem.</p>
+                </div>
+
+                <div class="symptom-card">
+                    <h3>Faturamento Imprevisível</h3>
+                    <p>Um mês fatura bem, outro mês despenca. Você não consegue planejar nada porque não sabe quanto vai entrar.</p>
+                </div>
+
+                <div class="symptom-card">
+                    <h3>Secretária que Atende Sem Padrão</h3>
+                    <p>Não tem processo definido. Não sabe o tempo de resposta, a taxa de agendamento, quantos faltam. Opera no escuro.</p>
+                </div>
+
+                <div class="symptom-card">
+                    <h3>Sem Tempo para Nada</h3>
+                    <p>Trabalha o dia todo atendendo, chega em casa exausto e ainda precisa pensar na gestão. Não sobra tempo para família, lazer ou você mesmo.</p>
+                </div>
+
+                <div class="text-center mt-4 mb-4">
+                    <p class="subtitle" style="font-size: 17px; line-height: 1.7;">
+                        Se você se identifica com algum desses cenários, muito provavelmente você precisa implementar ou fortalecer o <strong>SISTEMA DE MARKETING E VENDAS DE ALTA PERFORMANCE</strong> do seu consultório.
+                    </p>
+                    <p class="subtitle" style="font-size: 17px; line-height: 1.7;">
+                        Pois hoje, diferente de antigamente, a competição pelo seu paciente está cada vez maior. E se você não possuir um sistema de captação, conversão e retenção de pacientes, provavelmente seu consultório está deixando muito dinheiro na mesa, ou pior, caminhando para o burnout.
+                    </p>
+                </div>
+
+                <h2 class="text-center mt-4 mb-4">A B2 Company vem ajudando médicos a transformarem seus consultórios em negócios lucrativos e previsíveis</h2>
+
+                <p class="text-center subtitle mb-4">Através de uma metodologia que atua nas 4 alavancas de crescimento de um consultório médico, ajudamos você a:</p>
+
+                <div class="symptom-card">
+                    <p>✅ Atrair pacientes particulares de forma consistente</p>
+                    <p>✅ Converter mais leads em consultas agendadas</p>
+                    <p>✅ Fazer pacientes voltarem e indicarem</p>
+                    <p>✅ Ter previsibilidade no faturamento mês a mês</p>
+                </div>
+
+                <p class="text-center subtitle mb-4">Este diagnóstico personalizado pode ser obtido através de uma sessão gratuita com um dos nossos consultores especializados.</p>
+
+                <button class="continue-btn mb-4" onclick="document.getElementById('showBookingBtn').scrollIntoView({behavior: 'smooth'})">
+                    Agendar Meu Diagnóstico Gratuito
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+
+                <h2 class="text-center mt-4 mb-4">BENEFÍCIOS DE TER UM SISTEMA DE MARKETING E VENDAS DE ALTA PERFORMANCE NO SEU CONSULTÓRIO</h2>
+
+                <div class="benefit-card">
+                    <span class="material-icons">analytics</span>
+                    <h3>Previsibilidade</h3>
+                    <p>Um consultório com processos bem estruturados garante números previsíveis. Você sabe quanto vai faturar antes do mês começar.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="material-icons">payments</span>
+                    <h3>Alta Lucratividade</h3>
+                    <p>Um consultório que opera com margem saudável, cobrando o que você vale, sem depender de convênio para sobreviver.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="material-icons">trending_up</span>
+                    <h3>Escala sem Estresse</h3>
+                    <p>Facilidade para crescer, abrir mais horários, contratar, expandir, porque você tem um processo definido que funciona.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="material-icons">balance</span>
+                    <h3>Equilíbrio Profissional</h3>
+                    <p>Mais tempo e tranquilidade mental para focar em outras áreas importantes da sua vida. Medicina não precisa consumir tudo.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="material-icons">lock_open</span>
+                    <h3>Independência do Dono</h3>
+                    <p>Um consultório cujas consultas acontecem e pacientes retornam mesmo quando você tira férias ou fica doente.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="material-icons">verified</span>
+                    <h3>Valor de Mercado</h3>
+                    <p>Um consultório que tem valor real, que pode ser vendido, franqueado ou replicado, porque não depende só de você.</p>
+                </div>
+
+                <h2 class="text-center mt-4 mb-4">FAQ, PERGUNTAS FREQUENTES</h2>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Quanto tempo dura o diagnóstico?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        O diagnóstico tem duração de 30 minutos, tempo suficiente para entendermos seu cenário atual e apresentarmos as principais oportunidades de crescimento.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Quem realiza o diagnóstico?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Um consultor especializado da B2 Company, com experiência em consultórios médicos e implementação de sistemas de marketing e vendas para o setor de saúde.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>O diagnóstico é realmente gratuito?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim, 100% gratuito. Não há compromisso e você receberá insights valiosos independentemente de seguir em frente ou não.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Como devo me preparar para o diagnóstico?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Não precisa preparar nada específico. Se possível, tenha em mente números básicos como faturamento mensal, quantidade de pacientes e seus principais desafios atuais.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Posso convidar alguém para participar comigo?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! Inclusive recomendamos que, se você tiver sócio ou gestor administrativo, participe junto para alinhar as oportunidades identificadas.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>O diagnóstico é personalizado para o meu consultório?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim. Analisamos suas respostas e adequamos as recomendações para sua especialidade, faturamento atual e principais desafios.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>E se eu já tiver tentado outras consultorias/agências?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Nossa abordagem é diferente: focamos em sistemas sustentáveis de longo prazo, não apenas em marketing isolado. Muitos dos nossos clientes chegam após experiências frustrantes com outras empresas.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>O que acontece depois do diagnóstico?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Você receberá um resumo com as principais oportunidades identificadas. Se fizer sentido para ambos, apresentamos uma proposta de implementação. Se não, você fica com os insights sem compromisso.
+                    </div>
+                </div>
+
+                <div class="booking-section text-center mt-4">
+                    <div class="gift-badge" style="background: #FFF3E0; color: #E65100;">⚠️ Vagas Limitadas</div>
+
+                    <p class="subtitle" style="font-size: 16px; margin: 20px 0;">
+                        Disponibilizamos apenas 10 diagnósticos por semana para garantir a qualidade do atendimento. Se você foi selecionado, não perca essa oportunidade.
+                    </p>
+
+                    <h2>SEU DIAGNÓSTICO ESTÁ RESERVADO</h2>
+
+                    <p class="subtitle" style="font-weight: 600; margin: 20px 0;">
+                        Agende agora sua sessão gratuita de 30 min com um consultor especializado.
+                    </p>
+
+                    <div style="display: flex; gap: 16px; justify-content: center; margin: 24px 0;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; max-width: 180px;">
+                            <span class="material-icons" style="color: #CAAA82; font-size: 32px;">schedule</span>
+                            <p style="font-size: 12px; color: #666; margin-top: 8px;">Duração</p>
+                            <p style="font-weight: 600;">30 minutos</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; max-width: 180px;">
+                            <span class="material-icons" style="color: #CAAA82; font-size: 32px;">payments</span>
+                            <p style="font-size: 12px; color: #666; margin-top: 8px;">Investimento</p>
+                            <p style="font-weight: 600;">GRATUITO</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; max-width: 180px;">
+                            <span class="material-icons" style="color: #CAAA82; font-size: 32px;">event_available</span>
+                            <p style="font-size: 12px; color: #666; margin-top: 8px;">Horários</p>
+                            <p style="font-weight: 600;">Limitados</p>
+                        </div>
+                    </div>
+
+                    <button class="continue-btn" onclick="document.getElementById('showBookingBtn').scrollIntoView({behavior: 'smooth'})">
+                        Agendar Meu Diagnóstico Gratuito
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+
+                    <p class="seal">Ao clicar, você será direcionado para escolher o melhor horário na sua agenda.</p>
+                </div>
+
+                <footer style="text-align: center; margin-top: 80px; padding: 40px 20px; border-top: 1px solid #E0E0E0;">
+                    <div class="logo" style="font-size: 32px;">MEDGM</div>
+                    <p style="color: #666; font-size: 14px; margin: 8px 0;">Marketing e Vendas para Consultórios Médicos</p>
+                    <p style="color: #999; font-size: 12px; margin-top: 20px;">© 2025 B2 Company. Todos os direitos reservados.</p>
+                    <p style="color: #999; font-size: 12px;">Termos de Uso | Política de Privacidade</p>
+                </footer>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
     <script>
+        // Quiz Data
+        const quizData = {
+            currentStep: 0,
+            totalSteps: 17,
+            answers: {}
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+
+            // Meta input handler
+            const metaInput = document.getElementById('metaFaturamento');
+            const metaBtn = document.getElementById('metaBtn');
+
+            if (metaInput && metaBtn) {
+                metaInput.addEventListener('input', function() {
+                    let value = this.value.replace(/\D/g, '');
+                    this.value = value;
+                    metaBtn.disabled = value.length === 0;
+                });
+            }
+
+            // Form button delay
+            const formBtn = document.getElementById('formBtn');
+            if (formBtn) {
+                let countdown = 5;
+                const interval = setInterval(() => {
+                    countdown--;
+                    formBtn.textContent = `Continuar (${countdown}s)`;
+                    if (countdown <= 0) {
+                        clearInterval(interval);
+                        formBtn.disabled = false;
+                        formBtn.innerHTML = 'Continuar <span class="material-icons">arrow_forward</span>';
+                    }
+                }, 1000);
+            }
+        });
+
+        // Start Quiz
         function startQuiz() {
-            localStorage.removeItem('quizAnswers');
-            fbq('track', 'InitiateCheckout');
-            window.location.href = 'step1.html';
+            fbq('track', 'Lead');
+            quizData.currentStep = 1;
+            showStep(1);
+        }
+
+        // Navigation
+        function nextStep() {
+            fbq('trackCustom', 'QuizStep', {step: quizData.currentStep});
+            quizData.currentStep++;
+
+            if (quizData.currentStep === 13) {
+                startLoading();
+            } else {
+                showStep(quizData.currentStep);
+            }
+        }
+
+        function previousStep() {
+            if (quizData.currentStep > 0) {
+                quizData.currentStep--;
+                showStep(quizData.currentStep);
+            }
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
+            updateProgressBar();
+            window.scrollTo(0, 0);
+        }
+
+        function updateProgressBar() {
+            const progress = (quizData.currentStep / quizData.totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Select Option
+        function selectOption(key, value, score = null) {
+            quizData.answers[key] = value;
+            if (score !== null) {
+                quizData.answers[key + '_score'] = score;
+            }
+
+            // Auto-advance for certain steps
+            const autoAdvanceSteps = [1, 2, 4, 6, 8, 9, 11];
+            if (autoAdvanceSteps.includes(quizData.currentStep)) {
+                setTimeout(() => nextStep(), 300);
+            }
+        }
+
+        // Save Meta and Next
+        function saveMetaAndNext() {
+            const meta = document.getElementById('metaFaturamento').value;
+            quizData.answers.metaFaturamento = meta;
+            nextStep();
+        }
+
+        // Form Submitted
+        function formSubmitted() {
+            fbq('track', 'CompleteRegistration');
+            nextStep();
+        }
+
+        // Loading Animation
+        function startLoading() {
+            showStep(13);
+            const loadingFill = document.getElementById('loadingFill');
+            const loadingText = document.getElementById('loadingText');
+            let progress = 0;
+
+            const messages = [
+                'Analisando captação e posicionamento...',
+                'Calculando taxa de conversão...',
+                'Avaliando retenção de pacientes...',
+                'Processando métricas de gestão...',
+                'Gerando diagnóstico personalizado...'
+            ];
+
+            let messageIndex = 0;
+
+            const interval = setInterval(() => {
+                progress += 2;
+                loadingFill.style.width = progress + '%';
+
+                if (progress % 20 === 0 && messageIndex < messages.length) {
+                    loadingText.textContent = messages[messageIndex];
+                    messageIndex++;
+                }
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        calculateResults();
+                        nextStep();
+                    }, 500);
+                }
+            }, 80);
+        }
+
+        // Calculate Results
+        function calculateResults() {
+            // Calculate scores
+            const captacaoScore = quizData.answers.leads_score || 50;
+            const conversaoScore = ((quizData.answers.conversao_score || 50) + (quizData.answers.roteiro_score || 50)) / 2;
+            const retencaoScore = quizData.answers.retorno_score || 50;
+            const gestaoScore = quizData.answers.metricas_score || 50;
+
+            // Determine status
+            function getStatus(score) {
+                if (score >= 76) return { text: 'Excelente', class: 'status-boa' };
+                if (score >= 51) return { text: 'Boa', class: 'status-regular' };
+                if (score >= 26) return { text: 'Regular', class: 'status-irregular' };
+                return { text: 'Crítica', class: 'status-critica' };
+            }
+
+            // Update UI
+            const captacao = getStatus(captacaoScore);
+            const conversao = getStatus(conversaoScore);
+            const retencao = getStatus(retencaoScore);
+            const gestao = getStatus(gestaoScore);
+
+            document.getElementById('scoreCaptacao').textContent = captacao.text;
+            document.getElementById('scoreCaptacao').className = 'result-card-status ' + captacao.class;
+
+            document.getElementById('scoreConversao').textContent = conversao.text;
+            document.getElementById('scoreConversao').className = 'result-card-status ' + conversao.class;
+
+            document.getElementById('scoreRetencao').textContent = retencao.text;
+            document.getElementById('scoreRetencao').className = 'result-card-status ' + retencao.class;
+
+            document.getElementById('scoreGestao').textContent = gestao.text;
+            document.getElementById('scoreGestao').className = 'result-card-status ' + gestao.class;
+
+            // Find bottleneck
+            const scores = [
+                { name: 'Gestão', score: gestaoScore, text: 'Você não tem visibilidade do que está acontecendo no seu consultório. Sem métricas é impossível saber onde está o problema e onde está a oportunidade.' },
+                { name: 'Conversão', score: conversaoScore, text: 'Seus leads não estão sendo convertidos adequadamente. Você está perdendo pacientes no processo de agendamento.' },
+                { name: 'Retenção', score: retencaoScore, text: 'Seus pacientes não estão retornando. Você está deixando muito dinheiro na mesa ao não maximizar o valor de cada paciente.' },
+                { name: 'Captação', score: captacaoScore, text: 'Você precisa atrair mais leads qualificados para atingir suas metas de faturamento.' }
+            ];
+
+            scores.sort((a, b) => a.score - b.score);
+            document.getElementById('gargaloText').textContent = scores[0].text;
+
+            fbq('track', 'ViewContent', {content_name: 'Diagnostico'});
+        }
+
+        // Show Booking Frame
+        function showBookingFrame() {
+            document.getElementById('bookingFrameContainer').style.display = 'block';
+            document.getElementById('showBookingBtn').style.display = 'none';
+            fbq('track', 'Schedule');
+
+            setTimeout(() => {
+                document.getElementById('bookingFrameContainer').scrollIntoView({behavior: 'smooth'});
+            }, 100);
+        }
+
+        // Toggle FAQ
+        function toggleFaq(element) {
+            element.classList.toggle('active');
         }
     </script>
 </body>
