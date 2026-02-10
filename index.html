@@ -526,10 +526,235 @@
         /* Booking Section */
         .booking-section {
             background: white;
-            padding: 40px 24px;
-            border-radius: 24px;
-            margin: 40px 0;
+            padding: 32px 20px;
+            border-radius: 20px;
+            margin: 32px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Landing Page Sections */
+        .landing-hero {
+            background: white;
+            padding: 32px 0;
+            text-align: center;
+        }
+
+        .landing-section {
+            padding: 48px 20px;
+        }
+
+        .landing-section-dark {
+            background: #1A1A1A;
+            color: white;
+            padding: 48px 20px;
+        }
+
+        .landing-section-light {
+            background: #F8F9FA;
+            padding: 48px 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            text-align: center;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .section-subtitle-dark {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Pain Points Grid */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .pain-card {
+            background: white;
+            padding: 24px 20px;
+            border-radius: 16px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .pain-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+        }
+
+        .pain-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Methodology Grid */
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .method-card {
+            background: white;
+            padding: 24px 20px;
+            border-radius: 16px;
+            border-left: 4px solid #CAAA82;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .method-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #CAAA82 0%, #8B7355 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 32px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .method-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+        }
+
+        .method-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        .method-result {
+            font-size: 13px;
+            color: #CAAA82;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* Benefits Grid - Dark BG */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .benefit-card-dark {
+            background: white;
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card-dark .material-icons {
+            font-size: 40px;
+            color: #CAAA82;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card-dark h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+        }
+
+        .benefit-card-dark p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* CTA Final Dark */
+        .cta-final {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 32px 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-final h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .cta-final p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 24px;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            background: rgba(255, 243, 224, 0.15);
+            border: 1px solid #FF6F00;
+            color: #FFB74D;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .info-card-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 16px 12px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .info-card-item .material-icons {
+            color: #CAAA82;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .info-card-item p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 4px;
+        }
+
+        .info-card-item strong {
+            font-size: 14px;
+            color: white;
+            font-weight: 600;
         }
 
         .booking-frame {
@@ -674,6 +899,30 @@
                 flex: 1;
                 text-align: center;
                 align-items: center;
+            }
+
+            /* Landing page desktop */
+            .landing-hero h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .pain-grid, .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .method-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .info-cards {
+                max-width: 600px;
+                margin: 24px auto;
             }
         }
 
@@ -1209,153 +1458,162 @@
             <p class="text-center seal">Clique acima para prosseguir para o agendamento</p>
         </div>
 
-        <!-- STEP 19: Agendamento + Sales Page -->
-        <div class="step" data-step="19">
-            <div class="booking-section text-center">
-                <div class="result-badge">Parabéns! Você foi selecionado</div>
-
-                <h1>DIAGNÓSTICO LIBERADO | VAGAS LIMITADAS</h1>
-
-                <p class="subtitle">Exclusivo para consultórios que faturam acima de R$ 30 mil e que querem transformar marketing em ativo estratégico e não custo.</p>
-
-                <p style="font-weight: 600; margin: 24px 0;">Agende agora seu diagnóstico gratuito de 30 minutos:</p>
-
-                <button class="continue-btn mb-4" onclick="showBookingFrame()" id="showBookingBtn">
+        <!-- STEP 19: Landing Page Completa -->
+        <div class="step" data-step="19" style="max-width: 900px; padding-top: 40px;">
+            <!-- DOBRA 01: HERO SECTION -->
+            <div class="landing-hero">
+                <h1 style="font-size: 24px; margin-bottom: 16px; line-height: 1.3;">
+                    Seu consultório fatura R$30 mil+, mas você ainda não sabe quanto vai entrar mês que vem?
+                </h1>
+                <p class="subtitle" style="margin-bottom: 24px;">
+                    Descubra em 30 minutos o que está travando seu crescimento — e o caminho para ter previsibilidade real no seu faturamento.
+                </p>
+                <button class="continue-btn" onclick="showBookingFrame()" id="showBookingBtn" style="margin: 0 auto 12px; max-width: 400px;">
                     Agendar Meu Diagnóstico Gratuito
                     <span class="material-icons">arrow_forward</span>
                 </button>
+                <p style="font-size: 12px; color: #999;">Sessão de 30 min | Gratuito | Sem compromisso</p>
+                <p style="font-size: 13px; color: #CAAA82; margin-top: 16px; font-weight: 600;">+120 médicos já passaram pelo diagnóstico</p>
+            </div>
 
-                <div id="bookingFrameContainer" style="display: none;">
-                    <iframe
-                        src="https://admin.b2company.co/widget/booking/oI07yHfrYTP1X9bNFySH"
-                        class="booking-frame"
-                        scrolling="no"
-                        id="oI07yHfrYTP1X9bNFySH_1770722284623">
-                    </iframe>
-                    <script src="https://admin.b2company.co/js/form_embed.js" type="text/javascript"></script>
+            <!-- Booking Frame Container -->
+            <div id="bookingFrameContainer" style="display: none; margin: 32px 0;">
+                <iframe
+                    src="https://admin.b2company.co/widget/booking/oI07yHfrYTP1X9bNFySH"
+                    style="width:100%;border:none;min-height:600px;border-radius:16px"
+                    scrolling="no"
+                    id="oI07yHfrYTP1X9bNFySH_1770722284623">
+                </iframe>
+                <script src="https://admin.b2company.co/js/form_embed.js" type="text/javascript"></script>
+            </div>
+
+            <!-- DOBRA 02: ESPELHO DE DORES -->
+            <div class="landing-section-light">
+                <h2 class="section-title">Você se identifica com algum desses cenários?</h2>
+
+                <div class="pain-grid">
+
+                    <div class="pain-card">
+                        <h3>Faturamento Imprevisível</h3>
+                        <p>Um mês fatura bem, outro despenca. Você não consegue planejar expansão, contratação ou férias porque não sabe quanto vai entrar.</p>
+                    </div>
+
+                    <div class="pain-card">
+                        <h3>Leads que Não Convertem</h3>
+                        <p>Investe em marketing, recebe contatos, mas a maioria não vira consulta. Você não sabe onde está perdendo esses pacientes.</p>
+                    </div>
+
+                    <div class="pain-card">
+                        <h3>Dependência de Convênio</h3>
+                        <p>Trabalha cada vez mais para ganhar cada vez menos. Precisa de volume absurdo para fechar as contas no final do mês.</p>
+                    </div>
+
+                    <div class="pain-card">
+                        <h3>Zero Tempo Pessoal</h3>
+                        <p>Chega em casa exausto e ainda precisa pensar na gestão. Não sobra tempo para família, saúde ou você mesmo.</p>
+                    </div>
+                </div>
+
+                <p class="text-center" style="font-size: 14px; color: #666; margin-top: 24px; line-height: 1.6;">
+                    Se você marcou mentalmente algum desses, seu consultório está operando abaixo do potencial. A boa notícia: isso tem solução — e começa com um diagnóstico.
+                </p>
+            </div>
+
+            <!-- DOBRA 04: METODOLOGIA -->
+            <div class="landing-section" style="background: white;">
+                <h2 class="section-title">O método que transforma consultórios em negócios previsíveis</h2>
+                <p class="section-subtitle">Atuamos nas 4 alavancas que determinam o crescimento de qualquer consultório médico</p>
+
+                <div class="method-grid">
+                    <div class="method-card">
+                        <div class="method-number">1</div>
+                        <h3>Captação</h3>
+                        <p>Atrair pacientes particulares com consistência</p>
+                        <p class="method-result">→ Fluxo previsível de novos leads todo mês</p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-number">2</div>
+                        <h3>Conversão</h3>
+                        <p>Transformar leads em consultas agendadas</p>
+                        <p class="method-result">→ Sua secretária converte 60%+ dos contatos</p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-number">3</div>
+                        <h3>Retenção</h3>
+                        <p>Fazer pacientes voltarem e indicarem</p>
+                        <p class="method-result">→ Receita recorrente sem depender de novos leads</p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-number">4</div>
+                        <h3>Previsibilidade</h3>
+                        <p>Dashboard e métricas de gestão</p>
+                        <p class="method-result">→ Você sabe quanto vai faturar antes do mês começar</p>
+                    </div>
+                </div>
+
+                <p class="text-center" style="font-size: 14px; color: #666; margin-top: 24px; line-height: 1.6;">
+                    No diagnóstico gratuito, vamos identificar qual dessas alavancas está travada no seu consultório — e qual o caminho mais rápido para destravá-la.
+                </p>
+            </div>
+
+            <!-- DOBRA 05: BENEFÍCIOS -->
+            <div class="landing-section-dark">
+                <h2 class="section-title" style="color: white;">Como é um consultório que funciona de verdade</h2>
+
+                <div class="benefits-grid">
+
+                    <div class="benefit-card-dark">
+                        <span class="material-icons">analytics</span>
+                        <h3>Previsibilidade</h3>
+                        <p>Você sabe quanto vai faturar antes do mês começar.</p>
+                    </div>
+
+                    <div class="benefit-card-dark">
+                        <span class="material-icons">payments</span>
+                        <h3>Alta Lucratividade</h3>
+                        <p>Cobra o que vale, sem depender de convênio para sobreviver.</p>
+                    </div>
+
+                    <div class="benefit-card-dark">
+                        <span class="material-icons">trending_up</span>
+                        <h3>Escala sem Estresse</h3>
+                        <p>Cresce com processo, não com mais horas de trabalho.</p>
+                    </div>
+
+                    <div class="benefit-card-dark">
+                        <span class="material-icons">balance</span>
+                        <h3>Equilíbrio Pessoal</h3>
+                        <p>Mais tempo para família, saúde e vida fora do consultório.</p>
+                    </div>
+
+                    <div class="benefit-card-dark">
+                        <span class="material-icons">lock_open</span>
+                        <h3>Independência do Dono</h3>
+                        <p>O consultório funciona mesmo quando você tira férias.</p>
+                    </div>
+
+                    <div class="benefit-card-dark">
+                        <span class="material-icons">verified</span>
+                        <h3>Valor de Mercado</h3>
+                        <p>Um negócio que pode ser vendido, expandido ou replicado.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Sales Section -->
-            <div class="sales-section">
-                <h1 class="text-center mb-4">SE VOCÊ É MÉDICO E PASSA POR DESAFIOS EM TER PREVISIBILIDADE NO SEU CONSULTÓRIO, VEJA SE ISSO ACONTECE COM VOCÊ</h1>
+            <!-- DOBRA 06: FAQ -->
+            <div class="landing-section" style="background: white;">
+                <h2 class="section-title">Perguntas Frequentes</h2>
 
-                <p class="text-center subtitle" style="font-size: 18px; font-weight: 600;">Você provavelmente pode estar sofrendo de algum desses sintomas:</p>
-
-                <div class="symptom-card">
-                    <h3>Dependência de Convênio</h3>
-                    <p>Sente que está trabalhando cada vez mais para ganhar cada vez menos. Os convênios pagam mal e você precisa atender um volume absurdo para fechar as contas.</p>
-                </div>
-
-                <div class="symptom-card">
-                    <h3>Leads que Não Viram Pacientes</h3>
-                    <p>Investe em marketing, recebe contatos, mas sua secretária não consegue converter em consultas. Você não sabe quantos leads perde por mês.</p>
-                </div>
-
-                <div class="symptom-card">
-                    <h3>Pacientes que Vêm Uma Vez e Somem</h3>
-                    <p>Atende bem, resolve o problema, mas o paciente nunca mais volta. Você vive correndo atrás de pacientes novos em vez de cultivar os que já tem.</p>
-                </div>
-
-                <div class="symptom-card">
-                    <h3>Faturamento Imprevisível</h3>
-                    <p>Um mês fatura bem, outro mês despenca. Você não consegue planejar nada porque não sabe quanto vai entrar.</p>
-                </div>
-
-                <div class="symptom-card">
-                    <h3>Secretária que Atende Sem Padrão</h3>
-                    <p>Não tem processo definido. Não sabe o tempo de resposta, a taxa de agendamento, quantos faltam. Opera no escuro.</p>
-                </div>
-
-                <div class="symptom-card">
-                    <h3>Sem Tempo para Nada</h3>
-                    <p>Trabalha o dia todo atendendo, chega em casa exausto e ainda precisa pensar na gestão. Não sobra tempo para família, lazer ou você mesmo.</p>
-                </div>
-
-                <div class="text-center mt-4 mb-4">
-                    <p class="subtitle" style="font-size: 17px; line-height: 1.7;">
-                        Se você se identifica com algum desses cenários, muito provavelmente você precisa implementar ou fortalecer o <strong>SISTEMA DE MARKETING E VENDAS DE ALTA PERFORMANCE</strong> do seu consultório.
-                    </p>
-                    <p class="subtitle" style="font-size: 17px; line-height: 1.7;">
-                        Pois hoje, diferente de antigamente, a competição pelo seu paciente está cada vez maior. E se você não possuir um sistema de captação, conversão e retenção de pacientes, provavelmente seu consultório está deixando muito dinheiro na mesa, ou pior, caminhando para o burnout.
-                    </p>
-                </div>
-
-                <h2 class="text-center mt-4 mb-4">A MedGM vem ajudando médicos a transformarem seus consultórios em negócios lucrativos e previsíveis</h2>
-
-                <p class="text-center subtitle mb-4">Através de uma metodologia que atua nas 4 alavancas de crescimento de um consultório médico, ajudamos você a:</p>
-
-                <div class="symptom-card">
-                    <p>✅ Atrair pacientes particulares de forma consistente</p>
-                    <p>✅ Converter mais leads em consultas agendadas</p>
-                    <p>✅ Fazer pacientes voltarem e indicarem</p>
-                    <p>✅ Ter previsibilidade no faturamento mês a mês</p>
-                </div>
-
-                <p class="text-center subtitle mb-4">Este diagnóstico personalizado pode ser obtido através de uma sessão gratuita com um dos nossos consultores especializados.</p>
-
-                <button class="continue-btn mb-4" onclick="document.getElementById('showBookingBtn').scrollIntoView({behavior: 'smooth'})">
-                    Agendar Meu Diagnóstico Gratuito
-                    <span class="material-icons">arrow_forward</span>
-                </button>
-
-                <h2 class="text-center mt-4 mb-4">BENEFÍCIOS DE TER UM SISTEMA DE MARKETING E VENDAS DE ALTA PERFORMANCE NO SEU CONSULTÓRIO</h2>
-
-                <div class="benefit-card">
-                    <span class="material-icons">analytics</span>
-                    <h3>Previsibilidade</h3>
-                    <p>Um consultório com processos bem estruturados garante números previsíveis. Você sabe quanto vai faturar antes do mês começar.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="material-icons">payments</span>
-                    <h3>Alta Lucratividade</h3>
-                    <p>Um consultório que opera com margem saudável, cobrando o que você vale, sem depender de convênio para sobreviver.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="material-icons">trending_up</span>
-                    <h3>Escala sem Estresse</h3>
-                    <p>Facilidade para crescer, abrir mais horários, contratar, expandir, porque você tem um processo definido que funciona.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="material-icons">balance</span>
-                    <h3>Equilíbrio Profissional</h3>
-                    <p>Mais tempo e tranquilidade mental para focar em outras áreas importantes da sua vida. Medicina não precisa consumir tudo.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="material-icons">lock_open</span>
-                    <h3>Independência do Dono</h3>
-                    <p>Um consultório cujas consultas acontecem e pacientes retornam mesmo quando você tira férias ou fica doente.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <span class="material-icons">verified</span>
-                    <h3>Valor de Mercado</h3>
-                    <p>Um consultório que tem valor real, que pode ser vendido, franqueado ou replicado, porque não depende só de você.</p>
-                </div>
-
-                <h2 class="text-center mt-4 mb-4">FAQ, PERGUNTAS FREQUENTES</h2>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-item active" onclick="toggleFaq(this)">
                     <div class="faq-question">
                         <span>Quanto tempo dura o diagnóstico?</span>
                         <span class="material-icons">expand_more</span>
                     </div>
                     <div class="faq-answer">
-                        O diagnóstico tem duração de 30 minutos, tempo suficiente para entendermos seu cenário atual e apresentarmos as principais oportunidades de crescimento.
-                    </div>
-                </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span>Quem realiza o diagnóstico?</span>
-                        <span class="material-icons">expand_more</span>
-                    </div>
-                    <div class="faq-answer">
-                        Um consultor especializado da MedGM, com experiência em consultórios médicos e implementação de sistemas de marketing e vendas para o setor de saúde.
+                        30 minutos. É uma sessão objetiva e focada, sem enrolação. Você sai com um mapa claro do que precisa fazer.
                     </div>
                 </div>
 
@@ -1365,47 +1623,37 @@
                         <span class="material-icons">expand_more</span>
                     </div>
                     <div class="faq-answer">
-                        Sim, 100% gratuito. Não há compromisso e você receberá insights valiosos independentemente de seguir em frente ou não.
+                        Sim, 100% gratuito e sem compromisso. Nosso objetivo é mostrar valor real antes de qualquer proposta comercial.
                     </div>
                 </div>
 
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>Como devo me preparar para o diagnóstico?</span>
+                        <span>Quem realiza o diagnóstico?</span>
                         <span class="material-icons">expand_more</span>
                     </div>
                     <div class="faq-answer">
-                        Não precisa preparar nada específico. Se possível, tenha em mente números básicos como faturamento mensal, quantidade de pacientes e seus principais desafios atuais.
+                        Um consultor especializado em gestão de consultórios médicos, com experiência prática em marketing e vendas para saúde.
                     </div>
                 </div>
 
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>Posso convidar alguém para participar comigo?</span>
+                        <span>Já tentei agência/consultoria e não funcionou.</span>
                         <span class="material-icons">expand_more</span>
                     </div>
                     <div class="faq-answer">
-                        Sim! Inclusive recomendamos que, se você tiver sócio ou gestor administrativo, participe junto para alinhar as oportunidades identificadas.
+                        A MedGM não é agência nem consultoria tradicional. Combinamos estratégia + execução, atuando nas 4 alavancas do seu consultório. O diagnóstico vai mostrar exatamente onde as tentativas anteriores falharam.
                     </div>
                 </div>
 
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">
-                        <span>O diagnóstico é personalizado para o meu consultório?</span>
+                        <span>Funciona para a minha especialidade?</span>
                         <span class="material-icons">expand_more</span>
                     </div>
                     <div class="faq-answer">
-                        Sim. Analisamos suas respostas e adequamos as recomendações para sua especialidade, faturamento atual e principais desafios.
-                    </div>
-                </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span>E se eu já tiver tentado outras consultorias/agências?</span>
-                        <span class="material-icons">expand_more</span>
-                    </div>
-                    <div class="faq-answer">
-                        Nossa abordagem é diferente: focamos em sistemas sustentáveis de longo prazo, não apenas em marketing isolado. Muitos dos nossos clientes chegam após experiências frustrantes com outras empresas.
+                        Sim. Nossa metodologia se adapta a qualquer especialidade médica. Já atendemos dermatologistas, ortopedistas, clínicos gerais, cirurgiões e mais de 15 especialidades.
                     </div>
                 </div>
 
@@ -1415,56 +1663,68 @@
                         <span class="material-icons">expand_more</span>
                     </div>
                     <div class="faq-answer">
-                        Você receberá um resumo com as principais oportunidades identificadas. Se fizer sentido para ambos, apresentamos uma proposta de implementação. Se não, você fica com os insights sem compromisso.
+                        Você recebe um plano de ação personalizado. Se fizer sentido para ambos os lados, apresentamos como a MedGM pode implementar o plano com você. Zero pressão.
                     </div>
                 </div>
 
-                <div class="booking-section text-center mt-4">
-                    <div class="gift-badge" style="background: #FFF3E0; color: #E65100;">⚠️ Vagas Limitadas</div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Preciso preparar algo antes?</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Apenas tenha em mãos seu faturamento médio mensal e uma ideia de quantos pacientes atende por semana. O resto a gente conduz.
+                    </div>
+                </div>
 
-                    <p class="subtitle" style="font-size: 16px; margin: 20px 0;">
-                        Disponibilizamos apenas 10 diagnósticos por semana para garantir a qualidade do atendimento. Se você foi selecionado, não perca essa oportunidade.
-                    </p>
+                <p class="text-center" style="font-size: 14px; color: #666; margin-top: 32px;">
+                    Ainda tem dúvidas? Agende o diagnóstico e converse diretamente com nosso consultor.
+                </p>
+            </div>
 
-                    <h2>SEU DIAGNÓSTICO ESTÁ RESERVADO</h2>
+            <!-- DOBRA 07: CTA FINAL -->
+            <div class="landing-section" style="background: white; padding-bottom: 60px;">
+                <div class="cta-final">
+                    <div class="urgency-badge">⚠️ Vagas Limitadas</div>
 
-                    <p class="subtitle" style="font-weight: 600; margin: 20px 0;">
-                        Agende agora sua sessão gratuita de 30 min com um consultor especializado.
-                    </p>
+                    <h2>Seu diagnóstico está reservado</h2>
+                    <p>Agende agora sua sessão gratuita de 30 minutos com um consultor especializado</p>
 
-                    <div style="display: flex; gap: 16px; justify-content: center; margin: 24px 0; flex-wrap: wrap;">
-                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; min-width: 150px; max-width: 180px;">
-                            <span class="material-icons" style="color: #CAAA82; font-size: 32px;">schedule</span>
-                            <p style="font-size: 12px; color: #666; margin-top: 8px;">Duração</p>
-                            <p style="font-weight: 600;">30 minutos</p>
+                    <div class="info-cards">
+                        <div class="info-card-item">
+                            <span class="material-icons">schedule</span>
+                            <p>Duração</p>
+                            <strong>30 minutos</strong>
                         </div>
-                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; min-width: 150px; max-width: 180px;">
-                            <span class="material-icons" style="color: #CAAA82; font-size: 32px;">payments</span>
-                            <p style="font-size: 12px; color: #666; margin-top: 8px;">Investimento</p>
-                            <p style="font-weight: 600;">GRATUITO</p>
+                        <div class="info-card-item">
+                            <span class="material-icons">payments</span>
+                            <p>Investimento</p>
+                            <strong>GRATUITO</strong>
                         </div>
-                        <div style="background: white; padding: 20px; border-radius: 12px; flex: 1; min-width: 150px; max-width: 180px;">
-                            <span class="material-icons" style="color: #CAAA82; font-size: 32px;">event_available</span>
-                            <p style="font-size: 12px; color: #666; margin-top: 8px;">Horários</p>
-                            <p style="font-weight: 600;">Limitados</p>
+                        <div class="info-card-item">
+                            <span class="material-icons">event_available</span>
+                            <p>Horários</p>
+                            <strong>Limitados</strong>
                         </div>
                     </div>
 
-                    <button class="continue-btn" onclick="document.getElementById('showBookingBtn').scrollIntoView({behavior: 'smooth'})">
+                    <button class="continue-btn" onclick="document.getElementById('showBookingBtn').scrollIntoView({behavior: 'smooth'})" style="background: #CAAA82; color: #1A1A1A; max-width: 400px; margin: 0 auto;">
                         Agendar Meu Diagnóstico Gratuito
                         <span class="material-icons">arrow_forward</span>
                     </button>
 
-                    <p class="seal">Ao clicar, você será direcionado para escolher o melhor horário na sua agenda.</p>
+                    <p style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 16px;">
+                        Ao clicar, você será direcionado para escolher o melhor horário na sua agenda
+                    </p>
                 </div>
-
-                <footer style="text-align: center; margin-top: 80px; padding: 40px 20px; border-top: 1px solid #E0E0E0;">
-                    <div class="logo" style="font-size: 32px;">MEDGM</div>
-                    <p style="color: #666; font-size: 14px; margin: 8px 0;">Medical Growth & Management</p>
-                    <p style="color: #999; font-size: 12px; margin-top: 20px;">© 2025 MedGM. Todos os direitos reservados.</p>
-                    <p style="color: #999; font-size: 12px;">Termos de Uso | Política de Privacidade</p>
-                </footer>
             </div>
+
+            <!-- FOOTER -->
+            <footer style="text-align: center; margin-top: 40px; padding: 32px 20px; border-top: 1px solid #E0E0E0;">
+                <div class="logo" style="font-size: 28px;">MEDGM</div>
+                <p style="color: #666; font-size: 12px; margin: 8px 0;">Medical Growth & Management</p>
+                <p style="color: #999; font-size: 11px; margin-top: 16px;">© 2025 MedGM. Todos os direitos reservados.</p>
+            </footer>
         </div>
     </div>
 
