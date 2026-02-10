@@ -574,6 +574,12 @@
 
         <!-- Responses Tab -->
         <div id="responsesTab" class="tab-content">
+            <div style="margin-bottom: 20px; text-align: right;">
+                <button class="view-btn" onclick="exportResponsesToCSV()" style="padding: 12px 24px;">
+                    <span class="material-icons" style="vertical-align: middle; font-size: 16px; margin-right: 4px;">download</span>
+                    Baixar Planilha (CSV)
+                </button>
+            </div>
             <div class="responses-table">
                 <table>
                     <thead>
@@ -814,6 +820,73 @@ ${Object.entries(response.scores).map(([key, value]) => `${key}: ${value}/100`).
 === UTM PARAMS ===
 ${response.utmParams ? Object.entries(response.utmParams).map(([key, value]) => `${key}: ${value || 'N/A'}`).join('\n') : 'Nenhum UTM capturado'}
             `);
+        }
+
+        function exportResponsesToCSV() {
+            const responses = JSON.parse(localStorage.getItem('quiz_responses') || '[]');
+
+            if (responses.length === 0) {
+                alert('Nenhuma resposta disponível para exportar.');
+                return;
+            }
+
+            // CSV Headers
+            let csv = 'Data/Hora,Session ID,Especialidade,Faturamento Atual,% Convenio,Leads/Mes,Taxa Conversao,Roteiro Secretaria,Retorno Pacientes,Controle Metricas,Maior Desafio,Meta Faturamento,Disponibilidade,Score Captacao,Score Conversao,Score Retencao,Score Gestao,Gargalo,UTM Source,UTM Campaign,UTM Content,UTM Term,Placement,Tempo Total (s)\n';
+
+            // CSV Rows
+            responses.forEach(response => {
+                const date = new Date(response.timestamp).toLocaleString('pt-BR');
+                const row = [
+                    date,
+                    response.sessionId,
+                    response.answers.especialidade || '',
+                    response.answers.faturamento || '',
+                    response.answers.convenio || '',
+                    response.answers.leads || '',
+                    response.answers.conversao || '',
+                    response.answers.roteiro || '',
+                    response.answers.retorno || '',
+                    response.answers.metricas || '',
+                    response.answers.desafio || '',
+                    response.answers.meta || '',
+                    response.answers.disponibilidade || '',
+                    response.scores?.captacao || 0,
+                    response.scores?.conversao || 0,
+                    response.scores?.retencao || 0,
+                    response.scores?.gestao || 0,
+                    response.gargalo || '',
+                    response.utmParams?.site_source_name || '',
+                    response.utmParams?.campaign_name || '',
+                    response.utmParams?.adset_name || '',
+                    response.utmParams?.ad_name || '',
+                    response.utmParams?.placement || '',
+                    Math.round(response.totalTime / 1000) || 0
+                ];
+
+                // Escape commas and quotes in CSV
+                const escapedRow = row.map(cell => {
+                    const cellStr = String(cell);
+                    if (cellStr.includes(',') || cellStr.includes('"') || cellStr.includes('\n')) {
+                        return `"${cellStr.replace(/"/g, '""')}"`;
+                    }
+                    return cellStr;
+                });
+
+                csv += escapedRow.join(',') + '\n';
+            });
+
+            // Create download link
+            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+
+            link.setAttribute('href', url);
+            link.setAttribute('download', `medgm_respostas_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // Enter key login
