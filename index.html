@@ -2191,6 +2191,18 @@
             captureUTMParameters();
             loadUTMParameters();
 
+            // Check for preview parameter (from dashboard)
+            const urlParams = new URLSearchParams(window.location.search);
+            const previewStep = urlParams.get('preview');
+            if (previewStep !== null) {
+                const stepNum = parseInt(previewStep);
+                if (!isNaN(stepNum) && stepNum >= 0 && stepNum <= quizData.totalSteps) {
+                    quizData.currentStep = stepNum;
+                    showStep(stepNum);
+                    return; // Skip normal initialization
+                }
+            }
+
             updateProgressBar();
 
             // Meta input handler with R$ formatting
