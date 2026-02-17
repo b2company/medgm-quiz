@@ -2430,7 +2430,6 @@
 
         // Start Quiz
         function startQuiz() {
-            fbq('track', 'Lead');
             initializeSession(); // Initialize tracking
             quizData.currentStep = 1;
             showStep(1);
@@ -2438,7 +2437,6 @@
 
         // Navigation
         function nextStep() {
-            fbq('trackCustom', 'QuizStep', {step: quizData.currentStep});
             quizData.currentStep++;
 
             if (quizData.currentStep === 16) {
@@ -2516,7 +2514,6 @@
 
         // Form Submitted
         function formSubmitted() {
-            fbq('track', 'CompleteRegistration');
             nextStep();
         }
 
@@ -2613,14 +2610,12 @@
             // Save quiz response to localStorage
             saveQuizResponse();
 
-            fbq('track', 'ViewContent', {content_name: 'Diagnostico'});
         }
 
         // Show Booking Frame
         function showBookingFrame() {
             document.getElementById('bookingFrameContainer').style.display = 'block';
             document.getElementById('showBookingBtn').style.display = 'none';
-            fbq('track', 'Schedule');
 
             setTimeout(() => {
                 document.getElementById('bookingFrameContainer').scrollIntoView({behavior: 'smooth'});
