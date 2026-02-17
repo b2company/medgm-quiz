@@ -2403,6 +2403,16 @@
                 }
             }
 
+            // Route based on current URL path
+            const currentPath = window.location.pathname;
+            if (currentPath !== '/' && SLUG_TO_STEP[currentPath] !== undefined) {
+                const stepNum = SLUG_TO_STEP[currentPath];
+                quizData.currentStep = stepNum;
+                document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+                const targetStep = document.querySelector(`[data-step="${stepNum}"]`);
+                if (targetStep) targetStep.classList.add('active');
+            }
+
             updateProgressBar();
 
             // Meta input handler with R$ formatting
@@ -2453,11 +2463,42 @@
             }
         }
 
+        const STEP_SLUGS = {
+            0: '/',
+            1: '/especialidade',
+            2: '/faturamento',
+            3: '/convenio',
+            4: '/insight-convenio',
+            5: '/leads',
+            6: '/conversao',
+            7: '/insight-leads',
+            8: '/secretaria',
+            9: '/retorno',
+            10: '/insight-retorno',
+            11: '/metricas',
+            12: '/desafio',
+            13: '/meta',
+            14: '/disponibilidade',
+            15: '/contato',
+            16: '/analisando',
+            17: '/diagnostico',
+            18: '/parabens',
+            19: '/agendamento'
+        };
+
+        const SLUG_TO_STEP = Object.fromEntries(
+            Object.entries(STEP_SLUGS).map(([k, v]) => [v, parseInt(k)])
+        );
+
         function showStep(step) {
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
             document.querySelector(`[data-step="${step}"]`).classList.add('active');
             updateProgressBar();
             window.scrollTo(0, 0);
+
+            // Update URL slug
+            const slug = STEP_SLUGS[step] || '/';
+            history.pushState({ step }, '', slug);
 
             // Track step completion
             trackStepCompletion(step);
@@ -2471,6 +2512,17 @@
                 }, 500);
             }
         }
+
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.step !== undefined) {
+                const step = event.state.step;
+                document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+                document.querySelector(`[data-step="${step}"]`).classList.add('active');
+                quizData.currentStep = step;
+                updateProgressBar();
+                window.scrollTo(0, 0);
+            }
+        });
 
         // Form button countdown (5s delay without visual counter)
         function startFormButtonCountdown() {
